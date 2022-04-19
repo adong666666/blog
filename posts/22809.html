@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon.png">
+  <link rel="icon" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="张赛东">
+  <meta name="keywords" content="张赛东, 湖南张赛东, 衡阳张赛东, 耒阳张赛东, 正源张赛东, 花桥张赛东, 张赛东湖南, 张赛东耒阳, 张赛东正源, 湖南工业大学张赛东, 张赛东湖南工业大学, 张赛东衡阳, 张赛东计算机, 计算机张赛东, 张赛东花桥, IT张赛东, 张赛东IT, 碧云斜, 张赛东的艺苑, 张赛东博客, 张赛东的博客, 博客张赛东, 软件工程张赛东, 张赛东软件工程">
+  
+    <meta name="description" content="POJ3254（状态压缩dp）：玉米地&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 题目如下： 12345678910111213141516171819202122232425262728293031323334Corn FieldsTime Limit: 2000MS        Memory Limit: 65536KTotal Submissions: 26638        Ac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POJ3254（状态压缩dp）：玉米地">
+<meta property="og:url" content="https://blog.zsd.name/posts/22809.html">
+<meta property="og:site_name" content="张赛东">
+<meta property="og:description" content="POJ3254（状态压缩dp）：玉米地&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 题目如下： 12345678910111213141516171819202122232425262728293031323334Corn FieldsTime Limit: 2000MS        Memory Limit: 65536KTotal Submissions: 26638        Ac">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="article:published_time" content="2022-03-20T09:31:00.000Z">
+<meta property="article:modified_time" content="2022-03-20T09:34:23.856Z">
+<meta property="article:author" content="张赛东">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="记忆化">
+<meta property="article:tag" content="POJ">
+<meta property="article:tag" content="状态压缩">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+  
+  
+  <title>POJ3254（状态压缩dp）：玉米地 - 张赛东</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css">
+    
+  
+
+  
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="张赛东" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <strong>张赛东</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../archives">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../categories">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/83.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="POJ3254（状态压缩dp）：玉米地">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-20 17:31" pubdate>
+        2022年3月20日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      30 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">POJ3254（状态压缩dp）：玉米地</h1>
+            
+            <div class="markdown-body">
+              <h1 id="POJ3254（状态压缩dp）：玉米地"><a href="#POJ3254（状态压缩dp）：玉米地" class="headerlink" title="POJ3254（状态压缩dp）：玉米地"></a>POJ3254（状态压缩dp）：玉米地</h1><p>========================</p>
+<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ3254%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E7%8E%89%E7%B1%B3%E5%9C%B0/1.png"></p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><pre><code class="hljs txt">Corn Fields<br>Time Limit: 2000MS        Memory Limit: 65536K<br>Total Submissions: 26638        Accepted: 13894<br>Description<br><br>Farmer John has purchased a lush new rectangular pasture composed of M by N (1 ≤ M ≤ 12; 1 ≤ N ≤ 12) square parcels. He wants to grow some yummy corn for the cows on a number of squares. Regrettably, some of the squares are infertile and can't be planted. Canny FJ knows that the cows dislike eating close to each other, so when choosing which squares to plant, he avoids choosing squares that are adjacent; no two chosen squares share an edge. He has not yet made the final choice as to which squares to plant.<br><br>Being a very open-minded man, Farmer John wants to consider all possible options for how to choose the squares for planting. He is so open-minded that he considers choosing no squares as a valid option! Please help Farmer John determine the number of ways he can choose the squares to plant.<br><br>Input<br><br>Line 1: Two space-separated integers: M and N<br>Lines 2..M+1: Line i+1 describes row i of the pasture with N space-separated integers indicating whether a square is fertile (1 for fertile, 0 for infertile)<br>Output<br><br>Line 1: One integer: the number of ways that FJ can choose the squares modulo 100,000,000.<br>Sample Input<br><br>2 3<br>1 1 1<br>0 1 0<br>Sample Output<br><br>9<br>Hint<br><br>Number the squares as follows:<br>1 2 3<br>  4  <br><br>There are four ways to plant only on one squares (1, 2, 3, or 4), three ways to plant on two squares (13, 14, or 34), 1 way to plant on three squares (134), and one way to plant on no squares. 4+3+1+1=9.<br>Source<br><br>USACO 2006 November Gold<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//没写出来</span><br></code></pre></td></tr></tbody></table></figure>
+<p><code>心得： 这是一道比较经典的状态压缩动规题，难度高。</code></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs txt">可以发现这个题有如下特征，规模较小，每个方格只有两种状态，可以种玉米和不可以种玉米；<br><br>仍然考虑用状压dp；<br><br>定义状态：<br><br>定义状态dp[i][state]表示能到达第i行，且第i行的所有的种玉米和不种玉米的情况为state时的所有状态数。<br><br>种玉米代表1，不种玉米代表0；<br><br>分析这个状态定义，发现这个状态定义把整个问题分成了n个阶段(代表行数)，并且这n个阶段遵循无后效性；<br><br>状态转移：<br><br>当前阶段只受前一阶段的影响，当前阶段只能影响到后一阶段。所以状态转移就是把握住当前状态是如何影响后一<br><br>阶段的。在这个题中，我们会发现：<br><br>如果当前阶段的某列土地种了玉米，那么下个阶段的这列土地就不能种玉米。<br><br>另外，如果当前阶段某列土地的前一列土地种了玉米，那么这一列就不能再种玉米了。<br><br>需要注意的是，如果当前阶段的某一列可以种玉米，你可以有两种选择，种或不种。<br><br>按一个方向求解：<br><br>可以看出这个状态定义是按行数分了n个阶段，所以我们应该按照行数来进行求解，根据状态定义，结果是把最后<br><br>一行的所有可达到的状态的方法数加和即可。<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> mmset(a,b) memset(a,b,sizeof(a))</span><br> <br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">12</span> + <span class="hljs-number">5</span>;<br><span class="hljs-keyword">int</span>   dp[<span class="hljs-number">15</span>][INF];<br><span class="hljs-keyword">int</span> data[<span class="hljs-number">15</span>][<span class="hljs-number">15</span>];<br><span class="hljs-keyword">int</span> n,m;        <span class="hljs-comment">//行列 </span><br> <br><span class="hljs-comment">/*</span><br><span class="hljs-comment">2 3</span><br><span class="hljs-comment">1 1 1</span><br><span class="hljs-comment">0 1 0</span><br><span class="hljs-comment">Sample Output</span><br><span class="hljs-comment">9</span><br><span class="hljs-comment">*/</span><br> <br> <br><span class="hljs-comment">/*</span><br><span class="hljs-comment">i代表当前行 </span><br><span class="hljs-comment">j代表当前列</span><br><span class="hljs-comment">state代表当前行(阶段)的状态 </span><br><span class="hljs-comment">next代表下一行(阶段)的可到达状态</span><br><span class="hljs-comment">flag代表是上一列是否种了玉米，如果种了玉米，flag =  1,否则等于0； </span><br><span class="hljs-comment">*/</span> <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i,<span class="hljs-keyword">int</span> j,<span class="hljs-keyword">int</span> state,<span class="hljs-keyword">int</span> next,<span class="hljs-keyword">int</span> flag)</span></span>;<br> <br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-keyword">while</span>(~<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>,&amp;n,&amp;m))<br>    {<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++)<br>        {<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j++)<br>            {<br>                <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;data[i][j]);<br>            }<br>        }<br>        mmset(dp,<span class="hljs-number">0</span>);        <span class="hljs-comment">//初始化 </span><br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;    <br>        <br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">            遍历每个阶段的所有可达到状态，并搜索这种状态所能到达所有状态 。</span><br><span class="hljs-comment">            这是状态转移的过程 </span><br><span class="hljs-comment">        */</span> <br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++)    <br>        {<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> state = <span class="hljs-number">0</span>; state &lt; (<span class="hljs-number">1</span>&lt;&lt;m); state++)<br>            {<br>                <span class="hljs-keyword">if</span>(dp[i][state] &gt; <span class="hljs-number">0</span>)<br>                {<br>                    dfs(i,<span class="hljs-number">0</span>,state,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);<br>                }<br>            }<br>        }<br>        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">/*</span><br><span class="hljs-comment">            求解，对最后一行所有可达到的状态的方法数加和，并存在变量ans中; </span><br><span class="hljs-comment">        */</span> <br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> state = <span class="hljs-number">0</span>; state &lt; (<span class="hljs-number">1</span>&lt;&lt;m); state++)<br>        {<br>            <span class="hljs-keyword">if</span>(dp[n][state] &gt; <span class="hljs-number">0</span>)<br>            {<br>                ans=(ans+dp[n][state])%<span class="hljs-number">100000000</span>;<br>            }<br>        }<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,ans);<br>    }    <br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br> <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i,<span class="hljs-keyword">int</span> j,<span class="hljs-keyword">int</span> state,<span class="hljs-keyword">int</span> next,<span class="hljs-keyword">int</span> flag)</span></span><br><span class="hljs-function"></span>{<br>    <span class="hljs-keyword">if</span>(j == m) <br>    {<br>        dp[i+<span class="hljs-number">1</span>][next] = (dp[i+<span class="hljs-number">1</span>][next] + dp[i][state])%<span class="hljs-number">100000000</span>;<br>    }<br>    <span class="hljs-comment">/*</span><br><span class="hljs-comment">    下面这段代码有点绕，可以种玉米是指客观条件,</span><br><span class="hljs-comment">    但种不种玉米是主观意愿。 </span><br><span class="hljs-comment">    */</span> <br>    <span class="hljs-keyword">else</span><br>    {<br>        <span class="hljs-comment">//表示可以种玉米 </span><br>        <span class="hljs-keyword">if</span>(data[i+<span class="hljs-number">1</span>][j] == <span class="hljs-number">1</span> &amp;&amp; (state &amp; (<span class="hljs-number">1</span>&lt;&lt;j)) == <span class="hljs-number">0</span> &amp;&amp; flag== <span class="hljs-number">0</span>) <br>        {<br>            <span class="hljs-keyword">if</span>(flag == <span class="hljs-number">0</span>||flag == <span class="hljs-number">1</span>)    <span class="hljs-comment">//不种玉米 </span><br>            {<br>                 dfs(i,j+<span class="hljs-number">1</span>,state,next,<span class="hljs-number">0</span>);<br>            }<br>            <span class="hljs-keyword">if</span>(flag == <span class="hljs-number">0</span>)    <span class="hljs-comment">//种玉米 </span><br>            {<br>                dfs(i,j+<span class="hljs-number">1</span>,state,next | (<span class="hljs-number">1</span>&lt;&lt;j),<span class="hljs-number">1</span>);<br>            }<br>        }<br>        <span class="hljs-comment">//不可以种玉米 </span><br>        <span class="hljs-keyword">else</span><br>        {<br>            dfs(i,j+<span class="hljs-number">1</span>,state,next,<span class="hljs-number">0</span>);<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>题目链接：<a target="_blank" rel="noopener" href="http://poj.org/problem?id=3254">http://poj.org/problem?id=3254</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="../tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                      <a class="hover-with-bg" href="../tags/C/">C++</a>
+                    
+                      <a class="hover-with-bg" href="../tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
+                    
+                      <a class="hover-with-bg" href="../tags/%E8%AE%B0%E5%BF%86%E5%8C%96/">记忆化</a>
+                    
+                      <a class="hover-with-bg" href="../tags/POJ/">POJ</a>
+                    
+                      <a class="hover-with-bg" href="../tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/">状态压缩</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="48626.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SDUTOJ1299（动态规划）：最长上升子序列</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="37129.html">
+                        <span class="hidden-mobile">POJ2411（状态压缩dp）：方格覆盖</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content" style= "text-align: center;">
+     <p><span><i class="iconfont icon-copyright"></i></span> 2019 - <script> document.write(new Date().getFullYear()); </script> <a target="_blank" href="http://zsd.name/"> 张赛东</a></p> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css">
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/plugins.js"></script>
+
+<!-- Plugins -->
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+  
+        <script src="/js/img-lazyload.js"></script>
+  
+
+
+
+  
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js"></script>
+  
+  
+      <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script src="/js/boot.js"></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i+240*i||document.documentElement.clientHeight*i+240*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

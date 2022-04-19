@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon.png">
+  <link rel="icon" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="张赛东">
+  <meta name="keywords" content="张赛东, 湖南张赛东, 衡阳张赛东, 耒阳张赛东, 正源张赛东, 花桥张赛东, 张赛东湖南, 张赛东耒阳, 张赛东正源, 湖南工业大学张赛东, 张赛东湖南工业大学, 张赛东衡阳, 张赛东计算机, 计算机张赛东, 张赛东花桥, IT张赛东, 张赛东IT, 碧云斜, 张赛东的艺苑, 张赛东博客, 张赛东的博客, 博客张赛东, 软件工程张赛东, 张赛东软件工程">
+  
+    <meta name="description" content="PodfileKit&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Easy Podfile ! PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便。 github网址：https:&#x2F;&#x2F;github.com&#x2F;adong666666&#x2F;PodfileKit 设置平台 指定第三方框架 框架分类 子框架 建立分组 使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便">
+<meta property="og:url" content="https://blog.zsd.name/posts/38667.html">
+<meta property="og:site_name" content="张赛东">
+<meta property="og:description" content="PodfileKit&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; Easy Podfile ! PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便。 github网址：https:&#x2F;&#x2F;github.com&#x2F;adong666666&#x2F;PodfileKit 设置平台 指定第三方框架 框架分类 子框架 建立分组 使用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="article:published_time" content="2021-03-01T04:24:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T17:08:57.377Z">
+<meta property="article:author" content="张赛东">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="framework">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+  
+  
+  <title>PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便 - 张赛东</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css">
+    
+  
+
+  
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="张赛东" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <strong>张赛东</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../archives">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../categories">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/46.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-01 12:24" pubdate>
+        2021年3月1日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      68 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便</h1>
+            
+            <div class="markdown-body">
+              <h1 id="PodfileKit"><a href="#PodfileKit" class="headerlink" title="PodfileKit"></a>PodfileKit</h1><p>========================</p>
+<p>Easy Podfile !</p>
+<p>PodfileKit将github上常见的iOS(Swift)第三方框架进行了汇总，并且将框架进行了分类，为用户管理第三方框架提供了方便。</p>
+<h1 id="github网址：https-github-com-adong666666-PodfileKit"><a href="#github网址：https-github-com-adong666666-PodfileKit" class="headerlink" title="github网址：https://github.com/adong666666/PodfileKit"></a>github网址：<a target="_blank" rel="noopener" href="https://github.com/adong666666/PodfileKit">https://github.com/adong666666/PodfileKit</a></h1><ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E5%B9%B3%E5%8F%B0">设置平台</a></li>
+<li><a href="#%E6%8C%87%E5%AE%9A%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A1%86%E6%9E%B6">指定第三方框架</a></li>
+<li><a href="#%E6%A1%86%E6%9E%B6%E5%88%86%E7%B1%BB">框架分类</a></li>
+<li><a href="#%E5%AD%90%E6%A1%86%E6%9E%B6">子框架</a></li>
+<li><a href="#%E5%BB%BA%E7%AB%8B%E5%88%86%E7%BB%84">建立分组</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8">使用</a></li>
+<li><a href="#%E8%B4%A1%E7%8C%AE">贡献</a></li>
+<li><a href="#license">License</a><h2 id="设置平台"><a href="#设置平台" class="headerlink" title="设置平台"></a>设置平台</h2><code>platform:ios,'13.0'</code>，这里的<code>‘13.0’</code>是App所能支持的最低iOS系统版本，你可以替换为<code>‘11.0’、'12.3'、‘14.0’</code>等版本。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/README/%E5%B9%B3%E5%8F%B0%E8%AE%BE%E7%BD%AE.png" alt="设置平台"><h2 id="指定第三方框架"><a href="#指定第三方框架" class="headerlink" title="指定第三方框架"></a>指定第三方框架</h2><code>pod 'ARVideoKit'</code>指定名为<code>‘ARVideoKit’</code>的框架进行下载，你可以将<code>‘ARVideoKit’</code>替换为<code>‘你想要安装的框架的名称’</code>。通过<code>:git =&gt;</code>来指定相应网址，通过<code>:branch =&gt;</code>来指定相应分支，通过<code>commit:</code>来指定某次提交的版本，通过<code>:tag =&gt;</code>来指定某次被标记的提交版本，通过<code>:inhibit_warnings =&gt; true</code>来规避单个框架的警告。当然，<code>pod 'ARVideoKit'</code>之后的相关指定都可以被省略，这样你将会下载该框架的默认版本，一般为适合你工程的最新版本。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/README/%E7%A4%BA%E4%BE%8B.png" alt="示例"><h2 id="框架分类"><a href="#框架分类" class="headerlink" title="框架分类"></a>框架分类</h2>对框架进行了分类，你也可以根据自己的喜好进行分类。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/README/%E6%A1%86%E6%9E%B6%E5%88%86%E7%B1%BB.png" alt="框架分类"><br>当分类中有你需要使用的框架时，便将”#“删除即可。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/README/%E6%A1%86%E6%9E%B6%E9%80%89%E6%8B%A9.png" alt="框架选择"><h2 id="子框架"><a href="#子框架" class="headerlink" title="子框架"></a>子框架</h2>对于某些框架，如果只用到框架中部分功能，则不必下载整个框架，只需下载其子框架。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/README/%E5%AD%90%E6%A1%86%E6%9E%B6.png" alt="子框架"><h2 id="建立分组"><a href="#建立分组" class="headerlink" title="建立分组"></a>建立分组</h2>你可以使用<figure class="highlight erlang"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs erlang">def groupName <br> pod ...<br> ...<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></tbody></table></figure>
+来建立分组，比如某些框架是用于调试的，某些框架是用于App发布的，某些框架比较特殊等。在<code>target</code>之后，你需要将<code>ProjectName</code>替换为你项目的名称。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/README/%E5%88%86%E7%BB%84.png" alt="建立分组"><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2></li>
+</ul>
+<ul>
+<li>克隆本仓库，从而拿到仓库中的<code>PodFile</code>文件</li>
+<li>直接下载本仓库中的<code>PodFile</code>，置于工程文件夹的目录之下</li>
+<li>拷贝本仓库中<code>PodFile</code>的内容到你自己生成的<code>PodFile</code>文件中</li>
+<li>使用终端打开工程所在目录，运行如下命令<figure class="highlight cmake"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">$ pod <span class="hljs-keyword">install</span><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2></li>
+<li>Fork it !</li>
+<li>Create your feature branch: <code>git checkout -b my-new-feature</code></li>
+<li>Commit your changes: <code>git commit -am 'Add some feature'</code></li>
+<li>Push to the branch: <code>git push origin my-new-feature</code></li>
+<li>Submit a pull request<h2 id="License"><a href="#License" class="headerlink" title="License"></a>License</h2>PodfileKit is released under the MIT license. <a target="_blank" rel="noopener" href="https://github.com/adong666666/PodfileKit/blob/master/LICENSE">See LICENSE</a> for details.<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2>这里因为在博客就直接给内容哈：<figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br></pre></td><td class="code"><pre><code class="hljs ruby">source <span class="hljs-string">'https://github.com/CocoaPods/Specs.git'</span><br><span class="hljs-comment"># 所支持的iOS系统版本</span><br><span class="hljs-symbol">platform:</span>ios,<span class="hljs-string">'13.0'</span><br>use_frameworks!<br><span class="hljs-comment"># 规避第三方库的警告</span><br>inhibit_all_warnings!<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">thirdParty</span></span><br>  <span class="hljs-comment"># eg. # AR录像</span><br>  <span class="hljs-comment"># git指定网址, branch指定分支， commit指定某次提交的版本， tag指定某次被标记的提交版本，inhibit_warnings规避单个框架的警告</span><br>  <span class="hljs-comment"># pod 'ARVideoKit'#, :git =&gt; 'https://github.com/AFathi/ARVideoKit.git', :branch =&gt; 'swift_5', commit: "b7e1facdedd8fe16d04ef5f47c4697e89bad9f27",'~&gt; 5.0', :tag =&gt; '1.6.0', :inhibit_warnings =&gt; true</span><br>  <span class="hljs-comment"># 网络请求</span><br>  <span class="hljs-comment"># pod 'Alamofire'</span><br>  <span class="hljs-comment"># pod 'Moya'</span><br>  <span class="hljs-comment"># pod 'AlamofireObjectMapper'</span><br>  <span class="hljs-comment"># JSON解析</span><br>  <span class="hljs-comment"># pod 'SwiftyJSON'</span><br>  <span class="hljs-comment"># pod 'HandyJSON'</span><br>  <span class="hljs-comment"># pod 'Argo'</span><br>  <span class="hljs-comment"># pod 'Sync'</span><br>  <span class="hljs-comment"># 检测网络状态</span><br>  <span class="hljs-comment"># pod 'ReachabilitySwift'</span><br>  <span class="hljs-comment"># 数据流</span><br>  <span class="hljs-comment"># pod 'RxSwift'</span><br>  <span class="hljs-comment"># pod 'RxCocoa'</span><br>  <span class="hljs-comment"># pod 'ObjectMapper'</span><br>  <span class="hljs-comment"># pod 'ReSwift'</span><br>  <span class="hljs-comment"># pod 'ReactiveSwift'</span><br>  <span class="hljs-comment"># pod 'ReactorKit'</span><br>  <span class="hljs-comment"># 网络图片</span><br>  <span class="hljs-comment"># pod 'Kingfisher'</span><br>  <span class="hljs-comment"># 布局</span><br>  <span class="hljs-comment"># pod 'SnapKit'</span><br>  <span class="hljs-comment"># pod 'Cartography'</span><br>  <span class="hljs-comment"># pod 'Neon'</span><br>  <span class="hljs-comment"># pod 'AnimatedCollectionViewLayout'</span><br>  <span class="hljs-comment"># pod "BouncyLayout"</span><br>  <span class="hljs-comment"># pod 'TangramKit'</span><br>  <span class="hljs-comment"># pod 'TinyConstraints'</span><br>  <span class="hljs-comment"># pod 'LayoutKit'</span><br>  <span class="hljs-comment"># pod 'SteviaLayout'</span><br>  <span class="hljs-comment"># 动画</span><br>  <span class="hljs-comment"># pod 'Spring', :git =&gt; 'https://github.com/MengTo/Spring.git'</span><br>  <span class="hljs-comment"># pod 'lottie-ios'</span><br>  <span class="hljs-comment"># pod 'ViewAnimator'</span><br>  <span class="hljs-comment"># pod 'Advance'</span><br>  <span class="hljs-comment"># pod 'Pastel'</span><br>  <span class="hljs-comment"># pod 'YapAnimator'</span><br>  <span class="hljs-comment"># 转场</span><br>  <span class="hljs-comment"># pod 'Hero'</span><br>  <span class="hljs-comment"># pod 'Transition'</span><br>  <span class="hljs-comment"># pod 'Jelly'</span><br>  <span class="hljs-comment"># 代码规范</span><br>  <span class="hljs-comment"># pod 'SwiftLint'</span><br>  <span class="hljs-comment"># UserDefault</span><br>  <span class="hljs-comment"># pod 'SwiftyUserDefaults'</span><br>  <span class="hljs-comment"># 数据库</span><br>  <span class="hljs-comment"># pod 'SQLite.swift'</span><br>  <span class="hljs-comment"># pod 'GRDB.swift'</span><br>  <span class="hljs-comment"># pod 'FMDB'</span><br>  <span class="hljs-comment"># pod 'RealmSwift'</span><br>  <span class="hljs-comment"># pod 'YapDatabase'</span><br>  <span class="hljs-comment"># pod 'CoreStore'</span><br>  <span class="hljs-comment"># 扩展</span><br>  <span class="hljs-comment"># pod 'SwifterSwift'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/SwiftStdlib'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/Foundation'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/UIKit'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/AppKit'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/MapKit'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/CoreGraphics'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/CoreLocation'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/SpriteKit'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/SceneKit'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/StoreKit'</span><br>  <span class="hljs-comment">## pod 'SwifterSwift/Dispatch'</span><br>  <span class="hljs-comment"># pod 'Then'</span><br>  <span class="hljs-comment">### Use 'SwiftUIX'</span><br>  <span class="hljs-comment"># pod 'EZSwiftExtensions'</span><br>  <span class="hljs-comment"># Resources（图片、颜色、本地化字符串）</span><br>  <span class="hljs-comment"># pod 'R.swift'</span><br>  <span class="hljs-comment"># pod 'SwiftGen'</span><br>  <span class="hljs-comment"># 监控</span><br>  <span class="hljs-comment"># pod 'Crashlytics'</span><br>  <span class="hljs-comment"># pod 'Fabric'</span><br>  <span class="hljs-comment"># pod 'Bugly'</span><br>  <span class="hljs-comment"># 绑定</span><br>  <span class="hljs-comment"># pod 'bond'</span><br>  <span class="hljs-comment"># 提示框</span><br>  <span class="hljs-comment"># pod 'JGProgressHUD'</span><br>  <span class="hljs-comment"># pod 'SwiftMessages'</span><br>  <span class="hljs-comment"># pod 'SwiftEntryKit'</span><br>  <span class="hljs-comment"># pod 'SPPermissions'</span><br>  <span class="hljs-comment"># pod 'NotificationBanner'</span><br>  <span class="hljs-comment"># pod 'Whisper'</span><br>  <span class="hljs-comment"># pod 'PopupDialog'</span><br>  <span class="hljs-comment"># pod 'Toast-Swift'</span><br>  <span class="hljs-comment"># 侧边栏</span><br>  <span class="hljs-comment"># pod 'SideMenu'</span><br>  <span class="hljs-comment"># pod 'YALSideMenu'</span><br>  <span class="hljs-comment"># 下拉菜单</span><br>  <span class="hljs-comment"># pod 'BTNavigationDropdownMenu'</span><br>  <span class="hljs-comment"># 分页菜单</span><br>  <span class="hljs-comment"># pod 'Parchment'</span><br>  <span class="hljs-comment"># pod 'Tabman'</span><br>  <span class="hljs-comment"># UI控件</span><br>  <span class="hljs-comment"># pod 'LYEmptyView'</span><br>  <span class="hljs-comment"># pod 'CollectionKit'</span><br>  <span class="hljs-comment"># pod 'DifferenceKit'</span><br>  <span class="hljs-comment"># pod 'ACBadge'</span><br>  <span class="hljs-comment"># pod 'LTMorphingLabel'</span><br>  <span class="hljs-comment"># pod 'SkeletonView'</span><br>  <span class="hljs-comment"># pod 'NVActivityIndicatorView'</span><br>  <span class="hljs-comment"># pod 'FSPagerView'</span><br>  <span class="hljs-comment"># pod 'TextFieldEffects'</span><br>  <span class="hljs-comment"># pod 'SwipeCellKit'</span><br>  <span class="hljs-comment"># pod 'ScrollableGraphView'</span><br>  <span class="hljs-comment"># pod 'SCLAlertView'</span><br>  <span class="hljs-comment"># pod 'SkyFloatingLabelTextField'</span><br>  <span class="hljs-comment"># pod 'ActiveLabel'</span><br>  <span class="hljs-comment"># pod 'MarqueeLabel'</span><br>  <span class="hljs-comment"># pod 'DOFavoriteButton'</span><br>  <span class="hljs-comment"># pod 'Persei' # top menu for UITableView / UICollectionView / UIScrollView</span><br>  <span class="hljs-comment"># pod 'XLActionController'</span><br>  <span class="hljs-comment"># pod 'LNPopupController'</span><br>  <span class="hljs-comment"># pod 'CHIPageControl'</span><br>  <span class="hljs-comment"># pod 'EasyTipView'</span><br>  <span class="hljs-comment"># pod 'CardParts'</span><br>  <span class="hljs-comment"># pod 'PMAlertController'</span><br>  <span class="hljs-comment"># pod 'Segmentio'</span><br>  <span class="hljs-comment"># pod 'HGCircularSlider'</span><br>  <span class="hljs-comment"># pod 'ZLSwipeableViewSwift'</span><br>  <span class="hljs-comment"># pod 'ALCameraViewController'</span><br>  <span class="hljs-comment"># pod 'SwiftSpinner'</span><br>  <span class="hljs-comment"># pod 'Cosmos'</span><br>  <span class="hljs-comment"># 扫描</span><br>  <span class="hljs-comment"># pod 'BarcodeScanner'</span><br>  <span class="hljs-comment"># 二维码</span><br>  <span class="hljs-comment"># pod 'EFQRCode'</span><br>  <span class="hljs-comment"># 扫描文件</span><br>  <span class="hljs-comment"># pod 'WeScan'</span><br>  <span class="hljs-comment"># 取色器</span><br>  <span class="hljs-comment"># pod 'ColorSlider'</span><br>  <span class="hljs-comment"># 提示软件更新</span><br>  <span class="hljs-comment"># pod 'Siren'</span><br>  <span class="hljs-comment"># 机器学习视觉</span><br>  <span class="hljs-comment"># pod 'OpenCV'</span><br>  <span class="hljs-comment"># 反馈</span><br>  <span class="hljs-comment"># pod 'PinpointKit'</span><br>  <span class="hljs-comment"># 日志</span><br>  <span class="hljs-comment"># pod 'SwiftyBeaver'</span><br>  <span class="hljs-comment"># 加密</span><br>  <span class="hljs-comment"># pod 'CryptoSwift'</span><br>  <span class="hljs-comment"># pod 'RNCryptor'</span><br>  <span class="hljs-comment"># 内购</span><br>  <span class="hljs-comment"># pod 'SwiftyStoreKit'</span><br>  <span class="hljs-comment"># 日历</span><br>  <span class="hljs-comment"># pod 'JTAppleCalendar'</span><br>  <span class="hljs-comment"># pod 'CVCalendar'</span><br>  <span class="hljs-comment"># 图像处理</span><br>  <span class="hljs-comment"># pod 'Nuke'</span><br>  <span class="hljs-comment"># pod 'Macaw'</span><br>  <span class="hljs-comment"># 图片拾取</span><br>  <span class="hljs-comment"># pod 'ImagePicker'</span><br>  <span class="hljs-comment"># pod 'ZLPhotoBrowser'</span><br>  <span class="hljs-comment"># pod 'YPImagePicker'</span><br>  <span class="hljs-comment"># pod 'SKPhotoBrowser'</span><br>  <span class="hljs-comment"># 测试</span><br>  <span class="hljs-comment"># pod 'Quick'</span><br>  <span class="hljs-comment"># pod 'Nimble'</span><br>  <span class="hljs-comment"># Storyboard和xib</span><br>  <span class="hljs-comment"># pod 'IBAnimatable'</span><br>  <span class="hljs-comment"># 时间</span><br>  <span class="hljs-comment"># pod 'SwiftDate'</span><br>  <span class="hljs-comment"># 缓存</span><br>  <span class="hljs-comment"># pod 'HanekeSwift'</span><br>  <span class="hljs-comment"># pod 'Disk'</span><br>  <span class="hljs-comment"># pod 'Cache'</span><br>  <span class="hljs-comment"># 数学</span><br>  <span class="hljs-comment"># pod 'Surge'</span><br>  <span class="hljs-comment"># 多线程</span><br>  <span class="hljs-comment"># pod "AsyncSwift"</span><br>  <span class="hljs-comment"># pod 'Hydra'</span><br>  <span class="hljs-comment"># pod 'BrightFutures'</span><br>  <span class="hljs-comment"># 依赖注入</span><br>  <span class="hljs-comment"># pod 'Swinject'</span><br>  <span class="hljs-comment"># pod 'Typhoon'</span><br>  <span class="hljs-comment"># 聊天</span><br>  <span class="hljs-comment"># pod 'Chatto'</span><br>  <span class="hljs-comment"># pod 'ChattoAdditions'</span><br>  <span class="hljs-comment"># 信息</span><br>  <span class="hljs-comment"># pod 'Messenger'</span><br>  <span class="hljs-comment"># pod 'MessageKit'</span><br>  <span class="hljs-comment"># 手机号码</span><br>  <span class="hljs-comment"># pod 'PhoneNumberKit'</span><br>  <span class="hljs-comment"># 函数式编程</span><br>  <span class="hljs-comment"># pod 'Swiftz'</span><br>  <span class="hljs-comment"># 设备</span><br>  <span class="hljs-comment"># pod 'DeviceKit'</span><br>  <span class="hljs-comment"># 富文本</span><br>  <span class="hljs-comment"># pod 'BonMot'</span><br>  <span class="hljs-comment"># pod 'SwiftRichString'</span><br>  <span class="hljs-comment"># 人脸</span><br>  <span class="hljs-comment"># pod 'FaceAware'</span><br>  <span class="hljs-comment"># 地理位置</span><br>  <span class="hljs-comment"># pod 'SwiftLocation'</span><br>  <span class="hljs-comment"># HTML、XML</span><br>  <span class="hljs-comment"># pod 'SwiftSoup'</span><br>  <span class="hljs-comment"># pod 'Ono'</span><br>  <span class="hljs-comment"># pod 'Kanna'</span><br>  <span class="hljs-comment"># 便利 UITableViewCells, UICollectionViewCells 便利复用等</span><br>  <span class="hljs-comment"># pod 'Reusable'</span><br>  <span class="hljs-comment"># 本地化</span><br>  <span class="hljs-comment"># pod 'Localize-Swift'</span><br>  <span class="hljs-comment"># Gif支持</span><br>  <span class="hljs-comment"># pod 'Gifu'</span><br>  <span class="hljs-comment"># 颜色</span><br>  <span class="hljs-comment"># pod 'DynamicColor'</span><br>  <span class="hljs-comment"># 检测内存泄漏等</span><br>  <span class="hljs-comment"># pod 'LifetimeTracker'</span><br>  <span class="hljs-comment"># 表格</span><br>  <span class="hljs-comment"># pod 'SwiftCharts'</span><br>  <span class="hljs-comment"># 文件处理</span><br>  <span class="hljs-comment"># pod 'FileKit'</span><br>  <span class="hljs-comment"># pod 'Files'</span><br>  <span class="hljs-comment"># 主题 适配暗黑模式</span><br>  <span class="hljs-comment"># pod 'SwiftTheme'</span><br>  <span class="hljs-comment"># 状态栏显示FPS, CPU and memory usage, device model, app and iOS versions 等信息</span><br>  <span class="hljs-comment"># pod 'GDPerformanceView-Swift'</span><br>  <span class="hljs-comment"># 相机 麦克风</span><br>  <span class="hljs-comment"># pod 'HaishinKit.swift'</span><br>  <span class="hljs-comment"># 下载</span><br>  <span class="hljs-comment"># pod 'Tiercel'</span><br>  <span class="hljs-comment"># 蓝牙</span><br>  <span class="hljs-comment"># pod 'BluetoothKit'</span><br>  <span class="hljs-comment"># 压缩</span><br>  <span class="hljs-comment"># pod 'Zip'</span><br>  <span class="hljs-comment"># 钥匙串</span><br>  <span class="hljs-comment"># pod 'KeychainSwift'</span><br>  <span class="hljs-comment"># 社会化分享</span><br>  <span class="hljs-comment"># pod 'UMengUshare'</span><br>  <span class="hljs-comment">## pod 'UMengUShare/UI'</span><br>  <span class="hljs-comment">## pod 'UMengUShare/Social/ReducedWeChat'</span><br>  <span class="hljs-comment">## pod 'UMengUShare/Social/ReducedQQ'</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">project</span></span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">debug</span></span><br>  <span class="hljs-comment"># App界面调试</span><br>  <span class="hljs-comment"># pod 'Reveal-SDK'</span><br>  <span class="hljs-comment"># pod 'CocoaDebug'</span><br>  <span class="hljs-comment"># 网络调试</span><br>  <span class="hljs-comment"># pod 'Bagel'</span><br>  <span class="hljs-comment"># pod 'ResponseDetective'</span><br>  <span class="hljs-comment"># 日志</span><br>  <span class="hljs-comment"># pod 'XCGLogger'</span><br><span class="hljs-keyword">end</span><br>  <span class="hljs-comment"># 在这里替换你的项目名称</span><br>target <span class="hljs-string">"ProjectName"</span> <span class="hljs-keyword">do</span><br>  thirdParty<br>  project<br>  debug<br><span class="hljs-keyword">end</span><br><br>post_install <span class="hljs-keyword">do</span> <span class="hljs-params">|installer_representation|</span><br>  installer_representation.pods_project.targets.each <span class="hljs-keyword">do</span> <span class="hljs-params">|target|</span><br>    target.build_configurations.each <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span><br>      <span class="hljs-comment"># 所支持的iOS系统版本</span><br>      config.build_settings[<span class="hljs-string">'IPHONEOS_DEPLOYMENT_TARGET'</span>] = <span class="hljs-string">'13.0'</span><br>    <span class="hljs-keyword">end</span><br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></tbody></table></figure></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="../categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="../tags/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="../tags/framework/">framework</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="50954.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">PodfileKit summarizes the common iOS (Swift) third-party frameworks on GitHub (cocoapods)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="57105.html">
+                        <span class="hidden-mobile">学术论文——基于ARKit技术的文物交互式相机App的设计与实现</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content" style= "text-align: center;">
+     <p><span><i class="iconfont icon-copyright"></i></span> 2019 - <script> document.write(new Date().getFullYear()); </script> <a target="_blank" href="http://zsd.name/"> 张赛东</a></p> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css">
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/plugins.js"></script>
+
+<!-- Plugins -->
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+  
+        <script src="/js/img-lazyload.js"></script>
+  
+
+
+
+  
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js"></script>
+  
+  
+      <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script src="/js/boot.js"></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i+240*i||document.documentElement.clientHeight*i+240*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

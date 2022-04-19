@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon.png">
+  <link rel="icon" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="张赛东">
+  <meta name="keywords" content="张赛东, 湖南张赛东, 衡阳张赛东, 耒阳张赛东, 正源张赛东, 花桥张赛东, 张赛东湖南, 张赛东耒阳, 张赛东正源, 湖南工业大学张赛东, 张赛东湖南工业大学, 张赛东衡阳, 张赛东计算机, 计算机张赛东, 张赛东花桥, IT张赛东, 张赛东IT, 碧云斜, 张赛东的艺苑, 张赛东博客, 张赛东的博客, 博客张赛东, 软件工程张赛东, 张赛东软件工程">
+  
+    <meta name="description" content="SQLite.swift使用&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;对于这个，我只想上代码。 数据库代码示例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQLite.swift使用">
+<meta property="og:url" content="https://blog.zsd.name/posts/63335.html">
+<meta property="og:site_name" content="张赛东">
+<meta property="og:description" content="SQLite.swift使用&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;对于这个，我只想上代码。 数据库代码示例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="article:published_time" content="2021-03-02T16:29:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T16:56:22.460Z">
+<meta property="article:author" content="张赛东">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="framework">
+<meta property="article:tag" content="DataBase">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+  
+  
+  <title>SQLite.swift使用 - 张赛东</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css">
+    
+  
+
+  
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="张赛东" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <strong>张赛东</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../archives">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../categories">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/98.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SQLite.swift使用">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-03 00:29" pubdate>
+        2021年3月3日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      15k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      123 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SQLite.swift使用</h1>
+            
+            <div class="markdown-body">
+              <h1 id="SQLite-swift使用"><a href="#SQLite-swift使用" class="headerlink" title="SQLite.swift使用"></a>SQLite.swift使用</h1><p>========================<br>对于这个，我只想上代码。</p>
+<h2 id="数据库代码示例"><a href="#数据库代码示例" class="headerlink" title="数据库代码示例"></a>数据库代码示例</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></div></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">//</span><br><span class="hljs-comment">//  DataBase.swift</span><br><span class="hljs-comment">//  RunInto</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//  Created by 张赛东（手机：15674119605） on 2021/3/3.</span><br><span class="hljs-comment">//  Copyright © 2021 adong666666. All rights reserved.</span><br><span class="hljs-comment">//</span><br><br><span class="hljs-keyword">import</span> Foundation<br><span class="hljs-keyword">import</span> SQLite<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span>  <span class="hljs-title">DataCenterConstant</span> </span>{<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> dbName <span class="hljs-operator">=</span> <span class="hljs-string">"db.sqlite"</span><br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> dbFilePath <span class="hljs-operator">=</span> <span class="hljs-type">NSHomeDirectory</span>() <span class="hljs-operator">+</span> <span class="hljs-string">"/Documents/"</span> <span class="hljs-operator">+</span> <span class="hljs-type">DataCenterConstant</span>.dbName<br>}<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataBase</span> </span>{<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">let</span> shared <span class="hljs-operator">=</span> <span class="hljs-type">DataBase</span>()<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">var</span> dataBase: <span class="hljs-type">Connection</span>? <span class="hljs-operator">=</span> {<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">try</span> <span class="hljs-type">Connection</span>(<span class="hljs-type">DataCenterConstant</span>.dbFilePath)<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>(<span class="hljs-string">"Fail to Create DataBase"</span>)<br>            <span class="hljs-built_in">debugPrint</span>(error)<br>        }<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>    }()<br>    <br>    <span class="hljs-keyword">var</span> cuturalRelicsIntroduction <span class="hljs-operator">=</span> <span class="hljs-type">CulturalRelicsIntroduction</span>()<br>    <span class="hljs-function"><span class="hljs-keyword">init</span>()</span> {<br>        cuturalRelicsIntroduction.setupTable()<br>    }<br>}<br><br><span class="hljs-comment">// MARK: - Query</span><br><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">DataBase</span> </span>{<br>    <span class="hljs-comment">// 查询所有文物介绍</span><br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">queryCulturalRelicsIntroduction</span>()</span> -&gt; [<span class="hljs-type">Introduction</span>] {<br>        <span class="hljs-keyword">var</span> intro <span class="hljs-operator">=</span> [<span class="hljs-type">Introduction</span>]()<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> <span class="hljs-type">Array</span>(<span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">!</span>.prepare(cuturalRelicsIntroduction.table)) {<br>                <span class="hljs-keyword">let</span> idForDB <span class="hljs-operator">=</span> value[cuturalRelicsIntroduction.id]<br>                <span class="hljs-keyword">let</span> name <span class="hljs-operator">=</span> value[cuturalRelicsIntroduction.name]<br>                <span class="hljs-keyword">let</span> introduction <span class="hljs-operator">=</span> value[cuturalRelicsIntroduction.introduction]<br>                <span class="hljs-keyword">let</span> photo <span class="hljs-operator">=</span> value[cuturalRelicsIntroduction.photo]<br>                <span class="hljs-keyword">let</span> remark <span class="hljs-operator">=</span> value[cuturalRelicsIntroduction.remark]<br>                <span class="hljs-keyword">let</span> tempIntroduction <span class="hljs-operator">=</span> <span class="hljs-type">Introduction</span>(idForDataBase: idForDB, image: photo, title: <span class="hljs-type">I18n</span>.localizedString(name), text: <span class="hljs-type">I18n</span>.localizedString(introduction), date: <span class="hljs-type">I18n</span>.localizedString(remark))<br>                intro.append(tempIntroduction)<br>            }<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>(<span class="hljs-string">"<span class="hljs-subst">\(error)</span>"</span>)<br>        }<br>        <span class="hljs-keyword">return</span> intro<br>    }<br>    <span class="hljs-comment">//查询个别文物介绍</span><br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">queryIntroduction</span>(<span class="hljs-params">with</span> <span class="hljs-params">id</span>: <span class="hljs-type">Int64</span>)</span> -&gt; <span class="hljs-type">Introduction</span>? {<br>        <span class="hljs-keyword">let</span> filter <span class="hljs-operator">=</span> cuturalRelicsIntroduction.table.filter(id <span class="hljs-operator">==</span> cuturalRelicsIntroduction.id)<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> pluck <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.pluck(filter) <span class="hljs-keyword">else</span> {<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>            }<br>            <span class="hljs-keyword">return</span>  <span class="hljs-type">Introduction</span>(idForDataBase: pluck[cuturalRelicsIntroduction.id],<br>                                 image: pluck[cuturalRelicsIntroduction.photo],<br>                                 title: pluck[cuturalRelicsIntroduction.name],<br>                                 text: pluck[cuturalRelicsIntroduction.introduction],<br>                                 date: pluck[cuturalRelicsIntroduction.remark])<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>()<br>        }<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>    }<br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">queryIntroduction</span>(<span class="hljs-params">with</span> <span class="hljs-params">name</span>: <span class="hljs-type">String</span>)</span> -&gt; <span class="hljs-type">Introduction</span>? {<br>        <span class="hljs-keyword">let</span> filter <span class="hljs-operator">=</span> cuturalRelicsIntroduction.table.filter(name <span class="hljs-operator">==</span> cuturalRelicsIntroduction.name)<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> pluck <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.pluck(filter) <span class="hljs-keyword">else</span> {<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>            }<br>            <span class="hljs-keyword">return</span>  <span class="hljs-type">Introduction</span>(idForDataBase: pluck[cuturalRelicsIntroduction.id],<br>                                 image: pluck[cuturalRelicsIntroduction.photo],<br>                                 title: pluck[cuturalRelicsIntroduction.name],<br>                                 text: pluck[cuturalRelicsIntroduction.introduction],<br>                                 date: pluck[cuturalRelicsIntroduction.remark])<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>()<br>        }<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>    }<br>}<br><br><span class="hljs-comment">// MARK: - Insert</span><br><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">DataBase</span> </span>{<br>    <span class="hljs-comment">//插入文物介绍</span><br>    <span class="hljs-keyword">@discardableResult</span><br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">insertCulturalRelicsIntroduction</span>(<span class="hljs-params">with</span> <span class="hljs-params">intro</span>: <span class="hljs-type">Introduction</span>)</span> -&gt; (<span class="hljs-type">Int64</span>?, <span class="hljs-type">String</span>?) {<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.pluck(cuturalRelicsIntroduction.table.filter(cuturalRelicsIntroduction.id <span class="hljs-operator">==</span> intro.idForDataBase))) <span class="hljs-operator">!=</span> <span class="hljs-literal">nil</span> {<br>                <span class="hljs-keyword">return</span> (<span class="hljs-literal">nil</span>, <span class="hljs-string">"the cultural relics exsit"</span>)<br>            }<br>            <span class="hljs-keyword">let</span> insert <span class="hljs-operator">=</span> cuturalRelicsIntroduction.table.insert(cuturalRelicsIntroduction.name <span class="hljs-operator">&lt;-</span> intro.title,<br>                                                                cuturalRelicsIntroduction.id <span class="hljs-operator">&lt;-</span> intro.idForDataBase,<br>                                                                cuturalRelicsIntroduction.introduction <span class="hljs-operator">&lt;-</span> intro.text,<br>                                                                cuturalRelicsIntroduction.photo <span class="hljs-operator">&lt;-</span> intro.image,<br>                                                                cuturalRelicsIntroduction.remark <span class="hljs-operator">&lt;-</span> intro.date)<br>            <span class="hljs-keyword">let</span> insertIntroduction <span class="hljs-operator">=</span> <span class="hljs-keyword">try?</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.run(insert)<br>            <span class="hljs-keyword">return</span> (insertIntroduction, <span class="hljs-string">"inserted successfully"</span>)<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>()<br>        }<br>        <span class="hljs-keyword">return</span>(<span class="hljs-literal">nil</span>, <span class="hljs-string">"inserted unsuccessfully"</span>)<br>    }<br>}<br><br><span class="hljs-comment">// MARK: - Delete</span><br><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">DataBase</span> </span>{<br>    <span class="hljs-comment">//删除文物介绍</span><br>    <span class="hljs-keyword">@discardableResult</span><br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deletetCulturalRelicsIntroduction</span>(<span class="hljs-params">with</span> <span class="hljs-params">id</span>: <span class="hljs-type">Int64</span>)</span> -&gt; (<span class="hljs-type">Int</span>?, <span class="hljs-type">String</span>?) {<br>        <span class="hljs-keyword">let</span> filter <span class="hljs-operator">=</span> cuturalRelicsIntroduction.table.filter(id <span class="hljs-operator">==</span> cuturalRelicsIntroduction.id)<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">let</span> delete <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.run(filter.delete())<br>            <span class="hljs-keyword">return</span> (delete, <span class="hljs-string">"deleted successfully"</span>)<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>()<br>        }<br>        <span class="hljs-keyword">return</span> (<span class="hljs-literal">nil</span>, <span class="hljs-string">"deleted unsuccessfully"</span>)<br>    }<br>    <span class="hljs-keyword">@discardableResult</span><br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">deletetCulturalRelicsIntroduction</span>(<span class="hljs-params">with</span> <span class="hljs-params">name</span>: <span class="hljs-type">String</span>)</span> -&gt; (<span class="hljs-type">Int</span>?, <span class="hljs-type">String</span>?) {<br>        <span class="hljs-keyword">let</span> filter <span class="hljs-operator">=</span> cuturalRelicsIntroduction.table.filter(name <span class="hljs-operator">==</span> cuturalRelicsIntroduction.name)<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">let</span> deleteIntroduction <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.run(filter.delete())<br>            <span class="hljs-keyword">return</span> (deleteIntroduction, <span class="hljs-string">"deleted successfully"</span>)<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>()<br>        }<br>        <span class="hljs-keyword">return</span> (<span class="hljs-literal">nil</span>, <span class="hljs-string">"deleted unsuccessfully"</span>)<br>    }<br>}<br><br><span class="hljs-comment">// MARK: - Update</span><br><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">DataBase</span> </span>{<br>    <span class="hljs-comment">//修改文物介绍数据</span><br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">update</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">intro</span>: <span class="hljs-type">Introduction</span>)</span> -&gt; (<span class="hljs-type">Int</span>?, <span class="hljs-type">String</span>?) {<br>        <span class="hljs-keyword">guard</span> (<span class="hljs-keyword">try?</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.pluck(cuturalRelicsIntroduction.table.filter(cuturalRelicsIntroduction.id <span class="hljs-operator">==</span> intro.idForDataBase))) <span class="hljs-operator">!=</span> <span class="hljs-literal">nil</span> <span class="hljs-keyword">else</span> {<br>            <span class="hljs-keyword">return</span> (<span class="hljs-literal">nil</span>, <span class="hljs-string">"the cultural relics not exsit"</span>)<br>        }<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">let</span> update <span class="hljs-operator">=</span> cuturalRelicsIntroduction.table.update(cuturalRelicsIntroduction.name <span class="hljs-operator">&lt;-</span> intro.title,<br>                                                                cuturalRelicsIntroduction.id <span class="hljs-operator">&lt;-</span> intro.idForDataBase,<br>                                                                cuturalRelicsIntroduction.introduction <span class="hljs-operator">&lt;-</span> intro.text,<br>                                                                cuturalRelicsIntroduction.photo <span class="hljs-operator">&lt;-</span> intro.image,<br>                                                                cuturalRelicsIntroduction.remark <span class="hljs-operator">&lt;-</span> intro.date)<br>            <span class="hljs-keyword">let</span> updateIntroduction <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.run(update)<br>            <span class="hljs-keyword">return</span> (updateIntroduction, <span class="hljs-string">"updated successfully"</span>)<br>        } <span class="hljs-keyword">catch</span> {<br>            <span class="hljs-built_in">assertionFailure</span>()<br>        }<br>        <span class="hljs-keyword">return</span> (<span class="hljs-literal">nil</span>, <span class="hljs-string">"updated unsuccessfully"</span>)<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="建表示例"><a href="#建表示例" class="headerlink" title="建表示例"></a>建表示例</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">//</span><br><span class="hljs-comment">//  CulturalRelicsIntroduction.swift</span><br><span class="hljs-comment">//  RunInto</span><br><span class="hljs-comment">//</span><br><span class="hljs-comment">//  Created by 张赛东（手机：15674119605） on 2021/3/3.</span><br><span class="hljs-comment">//  Copyright © 2021 adong666666. All rights reserved.</span><br><span class="hljs-comment">//</span><br><br><span class="hljs-keyword">import</span> Foundation<br><span class="hljs-keyword">import</span> SQLite<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CulturalRelicsIntroduction</span> </span>{<br>    <span class="hljs-keyword">let</span> table <span class="hljs-operator">=</span> <span class="hljs-type">Table</span>(<span class="hljs-string">"CulturalRelicsIntroduction"</span>)<br>    <span class="hljs-keyword">let</span> id <span class="hljs-operator">=</span> <span class="hljs-type">Expression</span>&lt;<span class="hljs-type">Int64</span>&gt;(<span class="hljs-string">"id"</span>)<br>    <span class="hljs-keyword">let</span> name <span class="hljs-operator">=</span> <span class="hljs-type">Expression</span>&lt;<span class="hljs-type">String</span>&gt;(<span class="hljs-string">"name"</span>)<br>    <span class="hljs-keyword">let</span> introduction <span class="hljs-operator">=</span> <span class="hljs-type">Expression</span>&lt;<span class="hljs-type">String</span>&gt;(<span class="hljs-string">"introduction"</span>)<br>    <span class="hljs-keyword">let</span> photo <span class="hljs-operator">=</span> <span class="hljs-type">Expression</span>&lt;<span class="hljs-type">String</span>&gt;(<span class="hljs-string">"photo"</span>)<br>    <span class="hljs-keyword">let</span> remark <span class="hljs-operator">=</span> <span class="hljs-type">Expression</span>&lt;<span class="hljs-type">String</span>&gt;(<span class="hljs-string">"remark"</span>)<br>}<br><span class="hljs-class"><span class="hljs-keyword">extension</span> <span class="hljs-title">CulturalRelicsIntroduction</span> </span>{<br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">setupTable</span>()</span> {<br>        <span class="hljs-keyword">do</span> {<br>            <span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> cmd <span class="hljs-operator">=</span> createTableCMD() <span class="hljs-keyword">else</span> { <span class="hljs-keyword">return</span> }<br>            <span class="hljs-keyword">try</span> <span class="hljs-type">DataBase</span>.dataBase<span class="hljs-operator">?</span>.run(cmd)<br>        } <span class="hljs-keyword">catch</span> { <span class="hljs-built_in">print</span>(error) }<br>    }<br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">createTableCMD</span>()</span> -&gt; <span class="hljs-type">String</span>? {<br>        <span class="hljs-keyword">return</span> table.create(ifNotExists: <span class="hljs-literal">true</span>) {<br>            <span class="hljs-variable">$0</span>.column(id, primaryKey: <span class="hljs-literal">true</span>)<br>            <span class="hljs-variable">$0</span>.column(name)<br>            <span class="hljs-variable">$0</span>.column(introduction)<br>            <span class="hljs-variable">$0</span>.column(photo)<br>            <span class="hljs-variable">$0</span>.column(remark)<br>        }<br>    }<br>}<br><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>在合适的地方调用</p>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">DataBase</span>.shared.insertCulturalRelicsIntroduction(with: intro<span class="hljs-operator">!</span>)<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">Help</span>(show: <span class="hljs-variable">$showContent</span>, datas: <span class="hljs-type">DataBase</span>.shared.queryCulturalRelicsIntroduction())<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="查看sqlite文件"><a href="#查看sqlite文件" class="headerlink" title="查看sqlite文件"></a>查看sqlite文件</h2><p>下载真机的沙盒数据，查看后缀名为.sqlite的文件，即为生成的数据库，在应用商店搜“sqlite”,有很多软件可以查看<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20210331SQLite.swift%E4%BD%BF%E7%94%A8/%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93.png"><br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20210331SQLite.swift%E4%BD%BF%E7%94%A8/%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%932.png"></p>
+<h2 id="导出的表"><a href="#导出的表" class="headerlink" title="导出的表"></a>导出的表</h2><table>
+<thead>
+<tr>
+<th align="left">id</th>
+<th align="left">name</th>
+<th align="left">introduction</th>
+<th align="left">photo</th>
+<th align="left">remark</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">20210303063005</td>
+<td align="left">bottle</td>
+<td align="left">郎窑红釉穿带直口瓶，清康熙，高20.8cm，口径6.1cm，足径9.1cm。瓶直口，长颈，垂腹，圈足外撇。足外墙两侧各有一长方形穿孔，可穿系绳带。在容器上系带是对无梁、无系、无扳手的器物进行提拿的传统方法，拆卸容易而又非常实用，也可以使器物在摆放位置上固定，不致被损坏。</td>
+<td align="left">郎窑红釉穿带直口瓶</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063006</td>
+<td align="left">box</td>
+<td align="left">张成是元代雕漆大家，其传世作品被一致认为是雕漆作品里的珍品。张成造款雕漆云纹盘为故宫漆器的代表作品。高3.3cm，口径19.2cm.盘木胎黑漆，内外均雕云纹。堆漆甚厚，晶莹照人，刻工圆润。从此件具款的剔犀圆盘可知张成不仅是剔红高手，剔犀技巧也精湛至极，此盘为研究元代剔犀工艺提供了实例。</td>
+<td align="left">张成造款雕漆云纹盒</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063007</td>
+<td align="left">clock</td>
+<td align="left">黑漆彩绘楼阁群仙祝寿钟为故宫钟表的代表作。高185cm，面宽102cm，侧宽70cm.此钟共有7套机械系统，分别控制走时、报时、景箱内的活动装置等，技术水准相当高。根据记录，从乾隆八年接旨着手设计到十四年完工，历时五年多。</td>
+<td align="left">彩漆描金楼阁式自开门群仙祝寿御制钟</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063008</td>
+<td align="left">cup</td>
+<td align="left">宫廷之宝乾隆款金瓯永固杯为故宫宫廷文物的代表作。高12.5厘米，口径8厘米，足高5厘米，口边刻有回纹。根据清“内务府活计档”记载，乾隆皇帝对此杯的制作十分重视，不仅调用内库黄金、珍珠、宝石等珍贵材料，而且精工细作，曾多次修改，直至皇帝满意为止。因此，该杯一直被清代皇帝视为珍贵的祖传法宝。</td>
+<td align="left">乾隆款金瓯永固杯</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063009</td>
+<td align="left">ear_furnace</td>
+<td align="left">掐丝珐琅缠枝莲纹象耳炉，元，通高13.9cm，口径16cm，足径13.5cm。清宫旧藏。炉铜胎，圆形，鼓腹，象首卷鼻耳，圈足。炉颈部浅蓝釉地，饰黄、白、红、紫四色菊花12朵。腹部宝蓝釉地，饰红、白、黄三色掐丝珐琅缠枝莲花6朵。其下饰莲瓣纹一周。</td>
+<td align="left">掐丝珐琅缠枝莲纹象耳炉</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063010</td>
+<td align="left">grain_furnace</td>
+<td align="left">青玉云龙纹炉为故宫玉器的代表作品。宋代出品，高7.9cm，口径12.8cm.炉青玉质。通体以“工”字纹为底，上饰游龙、祥云和海水纹。器内底阴刻乾隆七言诗一首：“何年庙器赞天经，刻作飞龙殿四灵。毛伯邢侯异周制，祖丁父癸似商形。依然韫匵阅桑海，所惜从薪遇丙叮土气羊脂胥变幻，只余云水淡拖青。”</td>
+<td align="left">青玉云龙纹炉</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063011</td>
+<td align="left">painting</td>
+<td align="left">《清明上河图》为故宫书画代表作品，该画为张择端所作，以精致的工笔记录了北宋末叶、徽宗时代首都汴京(今开封)郊区和城内汴河两岸的建筑和民生。全图分为三个段落。作品以长卷形式，采用散点透视的构图法，将繁杂的景物纳入统一而富于变化的画面中。在5米多长的画卷里，共绘了550多个各色人物。</td>
+<td align="left">清明上河图</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063012</td>
+<td align="left">placard</td>
+<td align="left">西晋陆机的《平复帖》是故宫法帖的代表作品，也是目前存世最早的名人墨迹，内容为陆机向朋友问候疾病的书札。</td>
+<td align="left">平复帖</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063013</td>
+<td align="left">zun</td>
+<td align="left">青铜之宝酗亚方尊为故宫青铜器的代表作品。青铜器的产生是古代中国从野蛮时代走向文明时代的重要标志之一。尊是盛酒器，流行于商早期至春秋战国时期。方尊传世较少。上世纪70年代在山东益都苏埠屯出土了几件带有亚铭文的青铜器，从挖掘的墓穴来看，规模都不小，加上众多带有亚铭记的器物，说明它们所代表的可能是一个大族。</td>
+<td align="left">酗亚方尊</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+<tr>
+<td align="left">20210303063014</td>
+<td align="left">magpie</td>
+<td align="left">沈子蕃缂丝《梅鹊图》轴为故宫织绣的代表作品。图轴纵104cm，宽36cm.中国古代缂丝被认为是丝织工艺中最为高贵的品种，古人以“一寸缂丝一寸金”言缂丝作品之珍贵。缂丝之高贵，首先因其耗费工时巨大，以万缕千丝成其工巧，其次，缂技易学难精，虽摹缂书画，并非简单的照葫芦画瓢。</td>
+<td align="left">沈子蕃缂丝《梅鹊图》轴</td>
+<td align="left">故宫镇馆之宝</td>
+</tr>
+</tbody></table>
+<h2 id="导出的JSON"><a href="#导出的JSON" class="headerlink" title="导出的JSON"></a>导出的JSON</h2><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs json">[<br>  {<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"郎窑红釉穿带直口瓶"</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"bottle"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"郎窑红釉穿带直口瓶，清康熙，高20.8cm，口径6.1cm，足径9.1cm。瓶直口，长颈，垂腹，圈足外撇。足外墙两侧各有一长方形穿孔，可穿系绳带。在容器上系带是对无梁、无系、无扳手的器物进行提拿的传统方法，拆卸容易而又非常实用，也可以使器物在摆放位置上固定，不致被损坏。"</span>,<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063005</span><br>  },<br>  {<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063006</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"张成造款雕漆云纹盒"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"box"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"张成是元代雕漆大家，其传世作品被一致认为是雕漆作品里的珍品。张成造款雕漆云纹盘为故宫漆器的代表作品。高3.3cm，口径19.2cm.盘木胎黑漆，内外均雕云纹。堆漆甚厚，晶莹照人，刻工圆润。从此件具款的剔犀圆盘可知张成不仅是剔红高手，剔犀技巧也精湛至极，此盘为研究元代剔犀工艺提供了实例。"</span><br>  },<br>  {<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063007</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"黑漆彩绘楼阁群仙祝寿钟为故宫钟表的代表作。高185cm，面宽102cm，侧宽70cm.此钟共有7套机械系统，分别控制走时、报时、景箱内的活动装置等，技术水准相当高。根据记录，从乾隆八年接旨着手设计到十四年完工，历时五年多。"</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"彩漆描金楼阁式自开门群仙祝寿御制钟"</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"clock"</span><br>  },<br>  {<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"cup"</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"乾隆款金瓯永固杯"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"宫廷之宝乾隆款金瓯永固杯为故宫宫廷文物的代表作。高12.5厘米，口径8厘米，足高5厘米，口边刻有回纹。根据清“内务府活计档”记载，乾隆皇帝对此杯的制作十分重视，不仅调用内库黄金、珍珠、宝石等珍贵材料，而且精工细作，曾多次修改，直至皇帝满意为止。因此，该杯一直被清代皇帝视为珍贵的祖传法宝。"</span>,<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063008</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span><br>  },<br>  {<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"掐丝珐琅缠枝莲纹象耳炉"</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"掐丝珐琅缠枝莲纹象耳炉，元，通高13.9cm，口径16cm，足径13.5cm。清宫旧藏。炉铜胎，圆形，鼓腹，象首卷鼻耳，圈足。炉颈部浅蓝釉地，饰黄、白、红、紫四色菊花12朵。腹部宝蓝釉地，饰红、白、黄三色掐丝珐琅缠枝莲花6朵。其下饰莲瓣纹一周。"</span>,<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063009</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"ear_furnace"</span><br>  },<br>  {<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063010</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"grain_furnace"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"青玉云龙纹炉为故宫玉器的代表作品。宋代出品，高7.9cm，口径12.8cm.炉青玉质。通体以“工”字纹为底，上饰游龙、祥云和海水纹。器内底阴刻乾隆七言诗一首：“何年庙器赞天经，刻作飞龙殿四灵。毛伯邢侯异周制，祖丁父癸似商形。依然韫匵阅桑海，所惜从薪遇丙叮土气羊脂胥变幻，只余云水淡拖青。”"</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"青玉云龙纹炉"</span><br>  },<br>  {<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"清明上河图"</span>,<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063011</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"《清明上河图》为故宫书画代表作品，该画为张择端所作，以精致的工笔记录了北宋末叶、徽宗时代首都汴京(今开封)郊区和城内汴河两岸的建筑和民生。全图分为三个段落。作品以长卷形式，采用散点透视的构图法，将繁杂的景物纳入统一而富于变化的画面中。在5米多长的画卷里，共绘了550多个各色人物。"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"painting"</span><br>  },<br>  {<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"平复帖"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"西晋陆机的《平复帖》是故宫法帖的代表作品，也是目前存世最早的名人墨迹，内容为陆机向朋友问候疾病的书札。"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"placard"</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span>,<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063012</span><br>  },<br>  {<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063013</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"酗亚方尊"</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"zun"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"青铜之宝酗亚方尊为故宫青铜器的代表作品。青铜器的产生是古代中国从野蛮时代走向文明时代的重要标志之一。尊是盛酒器，流行于商早期至春秋战国时期。方尊传世较少。上世纪70年代在山东益都苏埠屯出土了几件带有亚铭文的青铜器，从挖掘的墓穴来看，规模都不小，加上众多带有亚铭记的器物，说明它们所代表的可能是一个大族。"</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span><br>  },<br>  {<br>    <span class="hljs-attr">"id"</span> : <span class="hljs-number">20210303063014</span>,<br>    <span class="hljs-attr">"name"</span> : <span class="hljs-string">"magpie"</span>,<br>    <span class="hljs-attr">"photo"</span> : <span class="hljs-string">"沈子蕃缂丝《梅鹊图》轴"</span>,<br>    <span class="hljs-attr">"introduction"</span> : <span class="hljs-string">"沈子蕃缂丝《梅鹊图》轴为故宫织绣的代表作品。图轴纵104cm，宽36cm.中国古代缂丝被认为是丝织工艺中最为高贵的品种，古人以“一寸缂丝一寸金”言缂丝作品之珍贵。缂丝之高贵，首先因其耗费工时巨大，以万缕千丝成其工巧，其次，缂技易学难精，虽摹缂书画，并非简单的照葫芦画瓢。"</span>,<br>    <span class="hljs-attr">"remark"</span> : <span class="hljs-string">"故宫镇馆之宝"</span><br>  }<br>]<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="导出的插入语句"><a href="#导出的插入语句" class="headerlink" title="导出的插入语句"></a>导出的插入语句</h2><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">BEGIN</span>;<br><br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063005</span>, <span class="hljs-string">'bottle'</span>, <span class="hljs-string">'郎窑红釉穿带直口瓶，清康熙，高20.8cm，口径6.1cm，足径9.1cm。瓶直口，长颈，垂腹，圈足外撇。足外墙两侧各有一长方形穿孔，可穿系绳带。在容器上系带是对无梁、无系、无扳手的器物进行提拿的传统方法，拆卸容易而又非常实用，也可以使器物在摆放位置上固定，不致被损坏。'</span>, <span class="hljs-string">'郎窑红釉穿带直口瓶'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063006</span>, <span class="hljs-string">'box'</span>, <span class="hljs-string">'张成是元代雕漆大家，其传世作品被一致认为是雕漆作品里的珍品。张成造款雕漆云纹盘为故宫漆器的代表作品。高3.3cm，口径19.2cm.盘木胎黑漆，内外均雕云纹。堆漆甚厚，晶莹照人，刻工圆润。从此件具款的剔犀圆盘可知张成不仅是剔红高手，剔犀技巧也精湛至极，此盘为研究元代剔犀工艺提供了实例。'</span>, <span class="hljs-string">'张成造款雕漆云纹盒'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063007</span>, <span class="hljs-string">'clock'</span>, <span class="hljs-string">'黑漆彩绘楼阁群仙祝寿钟为故宫钟表的代表作。高185cm，面宽102cm，侧宽70cm.此钟共有7套机械系统，分别控制走时、报时、景箱内的活动装置等，技术水准相当高。根据记录，从乾隆八年接旨着手设计到十四年完工，历时五年多。'</span>, <span class="hljs-string">'彩漆描金楼阁式自开门群仙祝寿御制钟'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063008</span>, <span class="hljs-string">'cup'</span>, <span class="hljs-string">'宫廷之宝乾隆款金瓯永固杯为故宫宫廷文物的代表作。高12.5厘米，口径8厘米，足高5厘米，口边刻有回纹。根据清“内务府活计档”记载，乾隆皇帝对此杯的制作十分重视，不仅调用内库黄金、珍珠、宝石等珍贵材料，而且精工细作，曾多次修改，直至皇帝满意为止。因此，该杯一直被清代皇帝视为珍贵的祖传法宝。'</span>, <span class="hljs-string">'乾隆款金瓯永固杯'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063009</span>, <span class="hljs-string">'ear_furnace'</span>, <span class="hljs-string">'掐丝珐琅缠枝莲纹象耳炉，元，通高13.9cm，口径16cm，足径13.5cm。清宫旧藏。炉铜胎，圆形，鼓腹，象首卷鼻耳，圈足。炉颈部浅蓝釉地，饰黄、白、红、紫四色菊花12朵。腹部宝蓝釉地，饰红、白、黄三色掐丝珐琅缠枝莲花6朵。其下饰莲瓣纹一周。'</span>, <span class="hljs-string">'掐丝珐琅缠枝莲纹象耳炉'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063010</span>, <span class="hljs-string">'grain_furnace'</span>, <span class="hljs-string">'青玉云龙纹炉为故宫玉器的代表作品。宋代出品，高7.9cm，口径12.8cm.炉青玉质。通体以“工”字纹为底，上饰游龙、祥云和海水纹。器内底阴刻乾隆七言诗一首：“何年庙器赞天经，刻作飞龙殿四灵。毛伯邢侯异周制，祖丁父癸似商形。依然韫匵阅桑海，所惜从薪遇丙叮土气羊脂胥变幻，只余云水淡拖青。”'</span>, <span class="hljs-string">'青玉云龙纹炉'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063011</span>, <span class="hljs-string">'painting'</span>, <span class="hljs-string">'《清明上河图》为故宫书画代表作品，该画为张择端所作，以精致的工笔记录了北宋末叶、徽宗时代首都汴京(今开封)郊区和城内汴河两岸的建筑和民生。全图分为三个段落。作品以长卷形式，采用散点透视的构图法，将繁杂的景物纳入统一而富于变化的画面中。在5米多长的画卷里，共绘了550多个各色人物。'</span>, <span class="hljs-string">'清明上河图'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063012</span>, <span class="hljs-string">'placard'</span>, <span class="hljs-string">'西晋陆机的《平复帖》是故宫法帖的代表作品，也是目前存世最早的名人墨迹，内容为陆机向朋友问候疾病的书札。'</span>, <span class="hljs-string">'平复帖'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063013</span>, <span class="hljs-string">'zun'</span>, <span class="hljs-string">'青铜之宝酗亚方尊为故宫青铜器的代表作品。青铜器的产生是古代中国从野蛮时代走向文明时代的重要标志之一。尊是盛酒器，流行于商早期至春秋战国时期。方尊传世较少。上世纪70年代在山东益都苏埠屯出土了几件带有亚铭文的青铜器，从挖掘的墓穴来看，规模都不小，加上众多带有亚铭记的器物，说明它们所代表的可能是一个大族。'</span>, <span class="hljs-string">'酗亚方尊'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> CulturalRelicsIntroduction(id, name, introduction, photo, remark) <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">20210303063014</span>, <span class="hljs-string">'magpie'</span>, <span class="hljs-string">'沈子蕃缂丝《梅鹊图》轴为故宫织绣的代表作品。图轴纵104cm，宽36cm.中国古代缂丝被认为是丝织工艺中最为高贵的品种，古人以“一寸缂丝一寸金”言缂丝作品之珍贵。缂丝之高贵，首先因其耗费工时巨大，以万缕千丝成其工巧，其次，缂技易学难精，虽摹缂书画，并非简单的照葫芦画瓢。'</span>, <span class="hljs-string">'沈子蕃缂丝《梅鹊图》轴'</span>, <span class="hljs-string">'故宫镇馆之宝'</span>);<br><br><span class="hljs-keyword">COMMIT</span>;<br></code></pre></td></tr></tbody></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="../categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="../tags/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="../tags/framework/">framework</a>
+                    
+                      <a class="hover-with-bg" href="../tags/DataBase/">DataBase</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="58771.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Swift多线程摘录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="50954.html">
+                        <span class="hidden-mobile">PodfileKit summarizes the common iOS (Swift) third-party frameworks on GitHub (cocoapods)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content" style= "text-align: center;">
+     <p><span><i class="iconfont icon-copyright"></i></span> 2019 - <script> document.write(new Date().getFullYear()); </script> <a target="_blank" href="http://zsd.name/"> 张赛东</a></p> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css">
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/plugins.js"></script>
+
+<!-- Plugins -->
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+  
+        <script src="/js/img-lazyload.js"></script>
+  
+
+
+
+  
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js"></script>
+  
+  
+      <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script src="/js/boot.js"></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i+240*i||document.documentElement.clientHeight*i+240*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

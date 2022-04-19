@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon.png">
+  <link rel="icon" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="张赛东">
+  <meta name="keywords" content="张赛东, 湖南张赛东, 衡阳张赛东, 耒阳张赛东, 正源张赛东, 花桥张赛东, 张赛东湖南, 张赛东耒阳, 张赛东正源, 湖南工业大学张赛东, 张赛东湖南工业大学, 张赛东衡阳, 张赛东计算机, 计算机张赛东, 张赛东花桥, IT张赛东, 张赛东IT, 碧云斜, 张赛东的艺苑, 张赛东博客, 张赛东的博客, 博客张赛东, 软件工程张赛东, 张赛东软件工程">
+  
+    <meta name="description" content="查看cocoapods中各个库的版本&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 记录一下 1cat Podfile.lock  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查看cocoapods中各个库的版本">
+<meta property="og:url" content="https://blog.zsd.name/posts/48263.html">
+<meta property="og:site_name" content="张赛东">
+<meta property="og:description" content="查看cocoapods中各个库的版本&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 记录一下 1cat Podfile.lock  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-09T13:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-21T09:36:09.919Z">
+<meta property="article:author" content="张赛东">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="framework">
+<meta property="article:tag" content="cocoapods">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>查看cocoapods中各个库的版本 - 张赛东</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css">
+    
+  
+
+  
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="张赛东" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <strong>张赛东</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../archives">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../categories">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/57.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="查看cocoapods中各个库的版本">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-09 21:00" pubdate>
+        2021年4月9日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      49 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">查看cocoapods中各个库的版本</h1>
+            
+            <div class="markdown-body">
+              <h1 id="查看cocoapods中各个库的版本"><a href="#查看cocoapods中各个库的版本" class="headerlink" title="查看cocoapods中各个库的版本"></a>查看cocoapods中各个库的版本</h1><p>========================</p>
+<p>记录一下</p>
+<figure class="highlight reasonml"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs reasonml">cat <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Podfile</span>.</span></span>lock<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight haml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br></pre></td><td class="code"><pre><code class="hljs haml">Last login: Fri Apr  9 05:48:04 on ttys002<br>zhangsaidong@zhangsaidongs-MacBook-Pro ~ % cd /Users/zhangsaidong/Desktop/project/CommonlyUsed/RunInto-Apple/RunInto/RunInto<br>zhangsaidong@zhangsaidongs-MacBook-Pro RunInto % cd ..<br>zhangsaidong@zhangsaidongs-MacBook-Pro RunInto % cat Podfile.lock<br>PODS:<br>  -<span class="ruby"> Alamofire (<span class="hljs-number">5.4</span>.<span class="hljs-number">1</span>)</span><br><span class="ruby">  - ARVideoKit (<span class="hljs-number">1.6</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - BarcodeScanner-custom (<span class="hljs-number">5.1</span>.<span class="hljs-number">4</span>)</span><br><span class="ruby">  - ColorSlider (<span class="hljs-number">4.4</span>)</span><br><span class="ruby">  - Crashlytics (<span class="hljs-number">3.14</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - Fabric (~&gt; <span class="hljs-number">1.10</span>.<span class="hljs-number">2</span>)</span><br><span class="ruby">  - Differentiator (<span class="hljs-number">5.0</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Fabric (<span class="hljs-number">1.10</span>.<span class="hljs-number">2</span>)</span><br><span class="ruby">  - HandyJSON (<span class="hljs-number">5.0</span>.<span class="hljs-number">2</span>)</span><br><span class="ruby">  - JGProgressHUD (<span class="hljs-number">2.2</span>)</span><br><span class="ruby">  - Kingfisher (<span class="hljs-number">6.1</span>.<span class="hljs-number">1</span>)</span><br><span class="ruby">  - MJRefresh (<span class="hljs-number">3.5</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Moya (<span class="hljs-number">14.0</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - Moya/Core (= <span class="hljs-number">14.0</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Moya/Core (<span class="hljs-number">14.0</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - Alamofire (~&gt; <span class="hljs-number">5.0</span>)</span><br><span class="ruby">  - <span class="hljs-string">"NSObject+Rx (2.1.0)"</span><span class="hljs-symbol">:</span></span><br><span class="ruby">    - RxSwift</span><br><span class="ruby">  - ObjectMapper (<span class="hljs-number">4.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - OpenCV (<span class="hljs-number">4.1</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - PinpointKit (<span class="hljs-number">1.5</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - PinpointKit/Core (= <span class="hljs-number">1.5</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - PinpointKit/Core (<span class="hljs-number">1.5</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - R.swift (<span class="hljs-number">5.3</span>.<span class="hljs-number">1</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - R.swift.Library (~&gt; <span class="hljs-number">5.3</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - R.swift.Library (<span class="hljs-number">5.3</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - ReactorKit (<span class="hljs-number">3.0</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - RxSwift (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">    - WeakMapTable (~&gt; <span class="hljs-number">1.1</span>)</span><br><span class="ruby">  - RxCocoa (<span class="hljs-number">6.1</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - RxRelay (= <span class="hljs-number">6.1</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">    - RxSwift (= <span class="hljs-number">6.1</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - RxDataSources (<span class="hljs-number">5.0</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - Differentiator (~&gt; <span class="hljs-number">5.0</span>)</span><br><span class="ruby">    - RxCocoa (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">    - RxSwift (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">  - RxFeedback (<span class="hljs-number">4.0</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - RxCocoa (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">    - RxSwift (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">  - RxGesture (<span class="hljs-number">4.0</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - RxCocoa (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">    - RxSwift (~&gt; <span class="hljs-number">6.0</span>)</span><br><span class="ruby">  - RxRelay (<span class="hljs-number">6.1</span>.<span class="hljs-number">0</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - RxSwift (= <span class="hljs-number">6.1</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - RxSwift (<span class="hljs-number">6.1</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Siren (<span class="hljs-number">5.8</span>.<span class="hljs-number">1</span>)</span><br><span class="ruby">  - SnapKit (<span class="hljs-number">5.0</span>.<span class="hljs-number">1</span>)</span><br><span class="ruby">  - Spring (<span class="hljs-number">1.0</span>.<span class="hljs-number">6</span>)</span><br><span class="ruby">  - SQLite.swift (<span class="hljs-number">0.12</span>.<span class="hljs-number">2</span>)<span class="hljs-symbol">:</span></span><br><span class="ruby">    - SQLite.swift/standard (= <span class="hljs-number">0.12</span>.<span class="hljs-number">2</span>)</span><br><span class="ruby">  - SQLite.swift/standard (<span class="hljs-number">0.12</span>.<span class="hljs-number">2</span>)</span><br><span class="ruby">  - SwifterSwift/CoreGraphics (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwifterSwift/Dispatch (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwifterSwift/Foundation (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwifterSwift/SceneKit (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwifterSwift/StoreKit (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwifterSwift/SwiftStdlib (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwifterSwift/UIKit (<span class="hljs-number">5.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwiftLint (<span class="hljs-number">0.42</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - SwiftyBeaver (<span class="hljs-number">1.9</span>.<span class="hljs-number">3</span>)</span><br><span class="ruby">  - SwiftyJSON (<span class="hljs-number">5.0</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Then (<span class="hljs-number">2.7</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Toast-Swift (<span class="hljs-number">5.0</span>.<span class="hljs-number">1</span>)</span><br><span class="ruby">  - WeakMapTable (<span class="hljs-number">1.2</span>.<span class="hljs-number">0</span>)</span><br><span class="ruby">  - Zip (<span class="hljs-number">2.1</span>.<span class="hljs-number">1</span>)</span><br><br><span class="ruby"><span class="hljs-symbol">DEPENDENCIES:</span></span><br><span class="ruby">  - Alamofire</span><br><span class="ruby">  - ARVideoKit (from <span class="hljs-string">`https://github.com/AFathi/ARVideoKit.git`</span>, branch <span class="hljs-string">`swift_5`</span>)</span><br><span class="ruby">  - BarcodeScanner-custom (from <span class="hljs-string">`https://github.com/adong666666/BarCodeScanner-custom.git`</span>, tag <span class="hljs-string">`5.1.4`</span>)</span><br><span class="ruby">  - ColorSlider</span><br><span class="ruby">  - Crashlytics</span><br><span class="ruby">  - Fabric</span><br><span class="ruby">  - HandyJSON</span><br><span class="ruby">  - JGProgressHUD</span><br><span class="ruby">  - Kingfisher</span><br><span class="ruby">  - MJRefresh</span><br><span class="ruby">  - Moya</span><br><span class="ruby">  - <span class="hljs-string">"NSObject+Rx"</span></span><br><span class="ruby">  - ObjectMapper</span><br><span class="ruby">  - OpenCV</span><br><span class="ruby">  - PinpointKit</span><br><span class="ruby">  - R.swift</span><br><span class="ruby">  - ReactorKit</span><br><span class="ruby">  - RxCocoa</span><br><span class="ruby">  - RxDataSources</span><br><span class="ruby">  - RxFeedback</span><br><span class="ruby">  - RxGesture</span><br><span class="ruby">  - RxSwift</span><br><span class="ruby">  - Siren</span><br><span class="ruby">  - SnapKit</span><br><span class="ruby">  - Spring (from <span class="hljs-string">`https://github.com/MengTo/Spring.git`</span>)</span><br><span class="ruby">  - SQLite.swift</span><br><span class="ruby">  - SwifterSwift/CoreGraphics</span><br><span class="ruby">  - SwifterSwift/Dispatch</span><br><span class="ruby">  - SwifterSwift/Foundation</span><br><span class="ruby">  - SwifterSwift/SceneKit</span><br><span class="ruby">  - SwifterSwift/StoreKit</span><br><span class="ruby">  - SwifterSwift/SwiftStdlib</span><br><span class="ruby">  - SwifterSwift/UIKit</span><br><span class="ruby">  - SwiftLint</span><br><span class="ruby">  - SwiftyBeaver</span><br><span class="ruby">  - SwiftyJSON</span><br><span class="ruby">  - Then</span><br><span class="ruby">  - Toast-Swift</span><br><span class="ruby">  - Zip</span><br><br><span class="ruby">SPEC <span class="hljs-symbol">REPOS:</span></span><br><span class="ruby">  <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/</span>CocoaPods/Specs.<span class="hljs-symbol">git:</span></span><br><span class="ruby">    - Alamofire</span><br><span class="ruby">    - ColorSlider</span><br><span class="ruby">    - Crashlytics</span><br><span class="ruby">    - Differentiator</span><br><span class="ruby">    - Fabric</span><br><span class="ruby">    - HandyJSON</span><br><span class="ruby">    - JGProgressHUD</span><br><span class="ruby">    - Kingfisher</span><br><span class="ruby">    - MJRefresh</span><br><span class="ruby">    - Moya</span><br><span class="ruby">    - <span class="hljs-string">"NSObject+Rx"</span></span><br><span class="ruby">    - ObjectMapper</span><br><span class="ruby">    - OpenCV</span><br><span class="ruby">    - PinpointKit</span><br><span class="ruby">    - R.swift</span><br><span class="ruby">    - R.swift.Library</span><br><span class="ruby">    - ReactorKit</span><br><span class="ruby">    - RxCocoa</span><br><span class="ruby">    - RxDataSources</span><br><span class="ruby">    - RxFeedback</span><br><span class="ruby">    - RxGesture</span><br><span class="ruby">    - RxRelay</span><br><span class="ruby">    - RxSwift</span><br><span class="ruby">    - Siren</span><br><span class="ruby">    - SnapKit</span><br><span class="ruby">    - SQLite.swift</span><br><span class="ruby">    - SwifterSwift</span><br><span class="ruby">    - SwiftLint</span><br><span class="ruby">    - SwiftyBeaver</span><br><span class="ruby">    - SwiftyJSON</span><br><span class="ruby">    - Then</span><br><span class="ruby">    - Toast-Swift</span><br><span class="ruby">    - WeakMapTable</span><br><span class="ruby">    - Zip</span><br><br><span class="ruby">EXTERNAL <span class="hljs-symbol">SOURCES:</span></span><br><span class="ruby">  <span class="hljs-symbol">ARVideoKit:</span></span><br><span class="ruby">    <span class="hljs-symbol">:branch</span>: swift_5</span><br><span class="ruby">    <span class="hljs-symbol">:git</span>: <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/</span>AFathi/ARVideoKit.git</span><br><span class="ruby">  BarcodeScanner-<span class="hljs-symbol">custom:</span></span><br><span class="ruby">    <span class="hljs-symbol">:git</span>: <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/adong</span>666666/BarCodeScanner-custom.git</span><br><span class="ruby">    <span class="hljs-symbol">:tag</span>: <span class="hljs-number">5.1</span>.<span class="hljs-number">4</span></span><br><span class="ruby">  <span class="hljs-symbol">Spring:</span></span><br><span class="ruby">    <span class="hljs-symbol">:git</span>: <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/</span>MengTo/Spring.git</span><br><br><span class="ruby">CHECKOUT <span class="hljs-symbol">OPTIONS:</span></span><br><span class="ruby">  <span class="hljs-symbol">ARVideoKit:</span></span><br><span class="ruby">    <span class="hljs-symbol">:commit</span>: b7e1facdedd8fe16d04ef5f47c4697e89bad9f27</span><br><span class="ruby">    <span class="hljs-symbol">:git</span>: <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/</span>AFathi/ARVideoKit.git</span><br><span class="ruby">  BarcodeScanner-<span class="hljs-symbol">custom:</span></span><br><span class="ruby">    <span class="hljs-symbol">:git</span>: <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/adong</span>666666/BarCodeScanner-custom.git</span><br><span class="ruby">    <span class="hljs-symbol">:tag</span>: <span class="hljs-number">5.1</span>.<span class="hljs-number">4</span></span><br><span class="ruby">  <span class="hljs-symbol">Spring:</span></span><br><span class="ruby">    <span class="hljs-symbol">:commit</span>: 50d92a5b9e08848387ae95bf44c6ad20834f7083</span><br><span class="ruby">    <span class="hljs-symbol">:git</span>: <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/github.com/</span>MengTo/Spring.git</span><br><br><span class="ruby">SPEC <span class="hljs-symbol">CHECKSUMS:</span></span><br><span class="ruby">  <span class="hljs-symbol">Alamofire:</span> 2291f7d21ca607c491dd17642e5d40fdcda0e65c</span><br><span class="ruby">  <span class="hljs-symbol">ARVideoKit:</span> 4bd4ac37b63e32de354d5470949416f527dd88f5</span><br><span class="ruby">  BarcodeScanner-<span class="hljs-symbol">custom:</span> 661d4e5a498a848580857e2eb5cbd1718bb356b7</span><br><span class="ruby">  <span class="hljs-symbol">ColorSlider:</span> 9a888e65b871fa1e6a26fadebf4931c949935681</span><br><span class="ruby">  <span class="hljs-symbol">Crashlytics:</span> 9220f5bc89e7a618df411b4f639389dbfb0e03d2</span><br><span class="ruby">  <span class="hljs-symbol">Differentiator:</span> e8497ceab83c1b10ca233716d547b9af21b9344d</span><br><span class="ruby">  <span class="hljs-symbol">Fabric:</span> ea977e3cd9c20425516d3dafd3bf8c941c51223f</span><br><span class="ruby">  <span class="hljs-symbol">HandyJSON:</span> 9e4e236f5d2dbefad5155a77417bbea438201c03</span><br><span class="ruby">  <span class="hljs-symbol">JGProgressHUD:</span> d83d7a981b85d11205e19ff8ad5bb9c40571c847</span><br><span class="ruby">  <span class="hljs-symbol">Kingfisher:</span> 676d63307fbef6ed5d5ed400bff36983480d7500</span><br><span class="ruby">  <span class="hljs-symbol">MJRefresh:</span> 6afc955813966afb08305477dd7a0d9ad5e79a16</span><br><span class="ruby">  <span class="hljs-symbol">Moya:</span> 5b45dacb75adb009f97fde91c204c1e565d31916</span><br><span class="ruby">  <span class="hljs-string">"NSObject+Rx"</span>: 09277ba78aa12a8e454c82429eb4e31bfb413131</span><br><span class="ruby">  <span class="hljs-symbol">ObjectMapper:</span> 1eb41f610210777375fa806bf161dc39fb832b81</span><br><span class="ruby">  <span class="hljs-symbol">OpenCV:</span> 52cd4d72ff29e2be83421477aec5447320b7fb19</span><br><span class="ruby">  <span class="hljs-symbol">PinpointKit:</span> 8599f60b7cff2b65e52a10293c220b6b81f14839</span><br><span class="ruby">  R.<span class="hljs-symbol">swift:</span> 56ec7e3aef34b9eee47a659e42462db2c1cc5ac3</span><br><span class="ruby">  R.swift.<span class="hljs-symbol">Library:</span> 0fc583cb55a99e28901299cc451614cad1161962</span><br><span class="ruby">  <span class="hljs-symbol">ReactorKit:</span> 5348c9881dcb546605b451e32759dccc9937d36e</span><br><span class="ruby">  <span class="hljs-symbol">RxCocoa:</span> 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343</span><br><span class="ruby">  <span class="hljs-symbol">RxDataSources:</span> aa47cc1ed6c500fa0dfecac5c979b723542d79cf</span><br><span class="ruby">  <span class="hljs-symbol">RxFeedback:</span> c762a59b678ed8e30b5c84b6e4e03ad0341d2ecb</span><br><span class="ruby">  <span class="hljs-symbol">RxGesture:</span> b095a86df33d199a33b46a644e7c58bdef8ab035</span><br><span class="ruby">  <span class="hljs-symbol">RxRelay:</span> 483e1a19fad961b41f0b0c0bee506f46c1ae14fe</span><br><span class="ruby">  <span class="hljs-symbol">RxSwift:</span> a834e5c538e89eca0cae86f403f4fbf0336786ce</span><br><span class="ruby">  <span class="hljs-symbol">Siren:</span> de768099aff1f1c9acda4247064788a4940b4bf3</span><br><span class="ruby">  <span class="hljs-symbol">SnapKit:</span> 97b92857e3df3a0c71833cce143274bf6ef8e5eb</span><br><span class="ruby">  <span class="hljs-symbol">Spring:</span> 3d113f14575ef79aec9c5f906dfa4f5001c03254</span><br><span class="ruby">  SQLite.<span class="hljs-symbol">swift:</span> d2b4642190917051ce6bd1d49aab565fe794eea3</span><br><span class="ruby">  <span class="hljs-symbol">SwifterSwift:</span> 334181863c416882d97b7a60c05054d9e4d799e2</span><br><span class="ruby">  <span class="hljs-symbol">SwiftLint:</span> 4fa9579c63416865179bc416f0a92d55f009600d</span><br><span class="ruby">  <span class="hljs-symbol">SwiftyBeaver:</span> 2e8acd6fc90c6d0a27055867a290794926d57c02</span><br><span class="ruby">  <span class="hljs-symbol">SwiftyJSON:</span> 36413e04c44ee145039d332b4f4e2d3e8d6c4db7</span><br><span class="ruby">  <span class="hljs-symbol">Then:</span> acfe0be7e98221c6204e12f8161459606d5d822d</span><br><span class="ruby">  Toast-<span class="hljs-symbol">Swift:</span> 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711</span><br><span class="ruby">  <span class="hljs-symbol">WeakMapTable:</span> 05c694ce8439a7a9ebabb56187287a63c57673d6</span><br><span class="ruby">  <span class="hljs-symbol">Zip:</span> 414f59909701fda9a84ab774ebe0f5449b1082cc</span><br><br><span class="ruby">PODFILE <span class="hljs-symbol">CHECKSUM:</span> 3c89a7a0577096b9dbf521d41263b504084bd37f</span><br><br><span class="ruby"><span class="hljs-symbol">COCOAPODS:</span> <span class="hljs-number">1.10</span>.<span class="hljs-number">1</span></span><br><span class="ruby">zhangsaidong<span class="hljs-variable">@zhangsaidongs</span>-MacBook-Pro RunInto % </span><br></code></pre></td></tr></tbody></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="../categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="../tags/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="../tags/framework/">framework</a>
+                    
+                      <a class="hover-with-bg" href="../tags/cocoapods/">cocoapods</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="9465.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">iOS日志框架CocoaLumberjack</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="17588.html">
+                        <span class="hidden-mobile">Zip使用</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content" style= "text-align: center;">
+     <p><span><i class="iconfont icon-copyright"></i></span> 2019 - <script> document.write(new Date().getFullYear()); </script> <a target="_blank" href="http://zsd.name/"> 张赛东</a></p> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css">
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/plugins.js"></script>
+
+<!-- Plugins -->
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+  
+        <script src="/js/img-lazyload.js"></script>
+  
+
+
+
+  
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js"></script>
+  
+  
+      <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script src="/js/boot.js"></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i+240*i||document.documentElement.clientHeight*i+240*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon.png">
+  <link rel="icon" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="张赛东">
+  <meta name="keywords" content="张赛东, 湖南张赛东, 衡阳张赛东, 耒阳张赛东, 正源张赛东, 花桥张赛东, 张赛东湖南, 张赛东耒阳, 张赛东正源, 湖南工业大学张赛东, 张赛东湖南工业大学, 张赛东衡阳, 张赛东计算机, 计算机张赛东, 张赛东花桥, IT张赛东, 张赛东IT, 碧云斜, 张赛东的艺苑, 张赛东博客, 张赛东的博客, 博客张赛东, 软件工程张赛东, 张赛东软件工程">
+  
+    <meta name="description" content="iOS_Swift文件夹和文件操作&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 首先获取app文件夹：(以下例子都在doucment文件夹下操作) 1234let manager &#x3D; FileManager.defaultlet urls: [URL] &#x3D; manager.urls(for: .documentDirectory, in: .userDomainMask)&#x2F;&#x2F; .library">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS_Swift文件夹和文件操作">
+<meta property="og:url" content="https://blog.zsd.name/posts/700.html">
+<meta property="og:site_name" content="张赛东">
+<meta property="og:description" content="iOS_Swift文件夹和文件操作&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 首先获取app文件夹：(以下例子都在doucment文件夹下操作) 1234let manager &#x3D; FileManager.defaultlet urls: [URL] &#x3D; manager.urls(for: .documentDirectory, in: .userDomainMask)&#x2F;&#x2F; .library">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-04T15:58:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T17:03:09.954Z">
+<meta property="article:author" content="张赛东">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="file">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>iOS_Swift文件夹和文件操作 - 张赛东</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css">
+    
+  
+
+  
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="张赛东" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <strong>张赛东</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../archives">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../categories">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/12.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="iOS_Swift文件夹和文件操作">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-04 23:58" pubdate>
+        2021年4月4日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      54 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">iOS_Swift文件夹和文件操作</h1>
+            
+            <div class="markdown-body">
+              <h1 id="iOS-Swift文件夹和文件操作"><a href="#iOS-Swift文件夹和文件操作" class="headerlink" title="iOS_Swift文件夹和文件操作"></a>iOS_Swift文件夹和文件操作</h1><p>========================</p>
+<p>首先获取app文件夹：(以下例子都在doucment文件夹下操作)</p>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> manager <span class="hljs-operator">=</span> <span class="hljs-type">FileManager</span>.default<br><span class="hljs-keyword">let</span> urls: [<span class="hljs-type">URL</span>] <span class="hljs-operator">=</span> manager.urls(for: .documentDirectory, in: .userDomainMask)<br><span class="hljs-comment">// .libraryDirectory、.cachesDirectory ...</span><br><span class="hljs-keyword">self</span>.documentURL <span class="hljs-operator">=</span> urls.first<span class="hljs-operator">!</span><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan"</span>, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-keyword">var</span> isDirectory: <span class="hljs-type">ObjCBool</span> <span class="hljs-operator">=</span> <span class="hljs-type">ObjCBool</span>(<span class="hljs-literal">false</span>)<br><span class="hljs-keyword">let</span> isExist <span class="hljs-operator">=</span> manager.fileExists(atPath: url.path, isDirectory: <span class="hljs-operator">&amp;</span>isDirectory)<br><span class="hljs-keyword">if</span> <span class="hljs-operator">!</span>isExist {<br>  <span class="hljs-keyword">do</span> {<br>    <span class="hljs-keyword">try</span> manager.createDirectory(at: url, withIntermediateDirectories: <span class="hljs-literal">true</span>, attributes: <span class="hljs-literal">nil</span>)<br>  } <span class="hljs-keyword">catch</span> {<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">"createDirectory error:<span class="hljs-subst">\(error)</span>"</span>)<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="创建文件，并写入内容"><a href="#创建文件，并写入内容" class="headerlink" title="创建文件，并写入内容"></a>创建文件，并写入内容</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan/test1.txt"</span>, isDirectory: <span class="hljs-literal">true</span>) <span class="hljs-comment">// txt文件会自动创建，只要给个名称就行</span><br><span class="hljs-keyword">let</span> string <span class="hljs-operator">=</span> <span class="hljs-string">"moxiaoyan"</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">try</span> string.write(to: url, atomically: <span class="hljs-literal">true</span>, encoding: .utf8)<br>  <span class="hljs-comment">// Data、Array、Dictionary、Image 都可以write</span><br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"write string error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="文件夹-文件-信息"><a href="#文件夹-文件-信息" class="headerlink" title="文件夹/文件 信息"></a>文件夹/文件 信息</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan"</span>, isDirectory: <span class="hljs-literal">true</span>) <span class="hljs-comment">// or "moxiaoyan/test1.txt"</span><br><span class="hljs-comment">// 可读、可写、可执行、可删除</span><br><span class="hljs-keyword">let</span> readable <span class="hljs-operator">=</span> manager.isReadableFile(atPath: url.path)<br><span class="hljs-keyword">let</span> writeable <span class="hljs-operator">=</span> manager.isWritableFile(atPath: url.path)<br><span class="hljs-keyword">let</span> executable <span class="hljs-operator">=</span> manager.isExecutableFile(atPath: url.path)<br><span class="hljs-keyword">let</span> deleteable <span class="hljs-operator">=</span> manager.isDeletableFile(atPath: url.path)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"readable:<span class="hljs-subst">\(readable)</span> writeable:<span class="hljs-subst">\(writeable)</span> executable:<span class="hljs-subst">\(executable)</span> deleteable:<span class="hljs-subst">\(deleteable)</span>"</span>)<br> <br><span class="hljs-comment">// NSFileCreationDate:创建时间、NSFileSize:文件大小、NSFileType:文件类型...</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> attributes: <span class="hljs-type">Dictionary</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> manager.attributesOfItem(atPath: url.path)<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"attributes<span class="hljs-subst">\(attributes)</span>"</span>)<br>  <span class="hljs-keyword">let</span> fileSize <span class="hljs-operator">=</span> attributes[<span class="hljs-type">FileAttributeKey</span>.size] <span class="hljs-keyword">as!</span> <span class="hljs-type">Int</span><br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"fileSize:<span class="hljs-subst">\(fileSize)</span>"</span>)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"attributes error: <span class="hljs-subst">\(error)</span>"</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="删除-文件夹-文件"><a href="#删除-文件夹-文件" class="headerlink" title="删除 文件夹/文件"></a>删除 文件夹/文件</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan"</span>, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-keyword">var</span> isDirectory: <span class="hljs-type">ObjCBool</span> <span class="hljs-operator">=</span> <span class="hljs-type">ObjCBool</span>(<span class="hljs-literal">false</span>)<br><span class="hljs-keyword">let</span> isExist <span class="hljs-operator">=</span> manager.fileExists(atPath: url.path, isDirectory: <span class="hljs-operator">&amp;</span>isDirectory)<br><span class="hljs-keyword">if</span> isExist {<br>  <span class="hljs-keyword">do</span> {<br>    <span class="hljs-keyword">try</span> manager.removeItem(at: url) <span class="hljs-comment">// 删除文件</span><br>    <span class="hljs-comment">// try manager.removeItem(atPath: url.path) // 删除文件路径</span><br>  } <span class="hljs-keyword">catch</span> {<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">"removeItem error:<span class="hljs-subst">\(error)</span>"</span>)<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="清空文件夹"><a href="#清空文件夹" class="headerlink" title="清空文件夹"></a>清空文件夹</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// 删除文件夹里的所有文件，而不删除文件夹</span><br><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan"</span>, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-comment">// 方法1：删除，再创建</span><br><span class="hljs-comment">// self.deleteFile(name)</span><br><span class="hljs-comment">// self.createFile(name)</span><br> <br><span class="hljs-comment">// 方法2：遍历文件删除</span><br><span class="hljs-keyword">let</span> files <span class="hljs-operator">=</span> manager.subpaths(atPath: url.path)<br><span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> files <span class="hljs-operator">??</span> [] {<br>  <span class="hljs-keyword">do</span> {<br>    <span class="hljs-keyword">try</span> manager.removeItem(atPath: url.path <span class="hljs-operator">+</span> <span class="hljs-string">"/<span class="hljs-subst">\(file)</span>"</span>) <span class="hljs-comment">// 需要拼接路径！！</span><br>  } <span class="hljs-keyword">catch</span> {<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">"remove item:<span class="hljs-subst">\(file)</span><span class="hljs-subst">\n</span> error:<span class="hljs-subst">\(error)</span>"</span>)<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="遍历文件夹"><a href="#遍历文件夹" class="headerlink" title="遍历文件夹"></a>遍历文件夹</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan"</span>, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-comment">// 1.1 浅遍历：只有 文件夹/文件 名</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> contentsOfDirectory <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> manager.contentsOfDirectory(atPath: url.path)<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"contentsOfDirectory:<span class="hljs-subst">\(contentsOfDirectory)</span>"</span>)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"1.1 浅遍历 error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br><span class="hljs-comment">// 1.2 浅遍历：包含完整路径</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> contentsOfDirectory <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> manager.contentsOfDirectory(at: url,<br>                                                            includingPropertiesForKeys: <span class="hljs-literal">nil</span>,<br>                                                            options: .skipsHiddenFiles)<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"skipsHiddenFiles:<span class="hljs-subst">\(contentsOfDirectory)</span>"</span>)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"1.2 浅遍历 error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br> <br><span class="hljs-comment">// 2.1 深度遍历：只有当前文件夹下的路径</span><br><span class="hljs-keyword">let</span> enumberatorAtPath <span class="hljs-operator">=</span> manager.enumerator(atPath: url.path)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"2.1 深度遍历：<span class="hljs-subst">\(enumberatorAtPath<span class="hljs-operator">?</span>.allObjects)</span>"</span>)<br><span class="hljs-comment">// 2.2 深度遍历：包含完整路径</span><br><span class="hljs-keyword">let</span> enumberatorAtURL <span class="hljs-operator">=</span> manager.enumerator(at: url,<br>                                          includingPropertiesForKeys: <span class="hljs-literal">nil</span>,<br>                                          options: .skipsHiddenFiles,<br>                                          errorHandler: <span class="hljs-literal">nil</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"2.2 深度遍历：<span class="hljs-subst">\(enumberatorAtURL<span class="hljs-operator">?</span>.allObjects)</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="文件写入数据"><a href="#文件写入数据" class="headerlink" title="文件写入数据"></a>文件写入数据</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan/test1.txt"</span>, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> data <span class="hljs-operator">=</span> string.data(using: .utf8, allowLossyConversion: <span class="hljs-literal">true</span>) <span class="hljs-keyword">else</span> {<br>  <span class="hljs-keyword">return</span><br>}<br><span class="hljs-comment">// 1.写在结尾</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> writeHandler <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">FileHandle</span>(forWritingTo: url)<br>  writeHandler.seekToEndOfFile()<br>  writeHandler.write(data)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"writeHandler error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br><span class="hljs-comment">// 2.从第n个字符开始覆盖</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> writeHandler <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">FileHandle</span>(forWritingTo: url)<br>  <span class="hljs-keyword">do</span> {<br>    <span class="hljs-keyword">try</span> writeHandler.seek(toOffset: <span class="hljs-number">1</span>)<br>  } <span class="hljs-keyword">catch</span> {<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">"writeHandler.seek error:<span class="hljs-subst">\(error)</span>"</span>)<br>  }<br>  writeHandler.write(data)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"writeHandler error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br><span class="hljs-comment">// 3.只保留前n个字符</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> writeHandler <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">FileHandle</span>(forWritingTo: url)<br>  <span class="hljs-keyword">do</span> {<br>    <span class="hljs-keyword">try</span> writeHandler.truncate(atOffset: <span class="hljs-number">1</span>)<br>  } <span class="hljs-keyword">catch</span> {<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">"writeHandler.truncate error:<span class="hljs-subst">\(error)</span>"</span>)<br>  }<br>  writeHandler.write(data)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"writeHandler error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br><span class="hljs-comment">// 4.只保留前n个字符:(n超过原字符长度，则并接在结尾)</span><br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-keyword">let</span> writeHandler <span class="hljs-operator">=</span> <span class="hljs-keyword">try</span> <span class="hljs-type">FileHandle</span>(forWritingTo: url)<br>  writeHandler.truncateFile(atOffset: <span class="hljs-number">12</span>)<br>  writeHandler.write(data)<br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"writeHandler error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="读取文件内容"><a href="#读取文件内容" class="headerlink" title="读取文件内容"></a>读取文件内容</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan/test1.txt"</span>, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-comment">// 方法1:</span><br><span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> data <span class="hljs-operator">=</span> manager.contents(atPath: url.path) <span class="hljs-keyword">else</span> {<br>  <span class="hljs-keyword">return</span><br>}<br><span class="hljs-keyword">let</span> readString <span class="hljs-operator">=</span> <span class="hljs-type">String</span>(data: data, encoding: .utf8)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"方法1：<span class="hljs-subst">\(readString <span class="hljs-operator">??</span> <span class="hljs-string">""</span>)</span>"</span>)<br><span class="hljs-comment">// 方法2:</span><br><span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> readHandler <span class="hljs-operator">=</span> <span class="hljs-type">FileHandle</span>(forReadingAtPath: url.path) <span class="hljs-keyword">else</span> {<br>  <span class="hljs-keyword">return</span><br>}<br><span class="hljs-keyword">guard</span> <span class="hljs-keyword">let</span> data2: <span class="hljs-type">Data</span> <span class="hljs-operator">=</span> readHandler.readDataToEndOfFile() <span class="hljs-keyword">else</span> {<br>  <span class="hljs-keyword">return</span><br>}<br><span class="hljs-keyword">let</span> readString2 <span class="hljs-operator">=</span> <span class="hljs-type">String</span>(data: data2, encoding: .utf8)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"方法2：<span class="hljs-subst">\(readString2 <span class="hljs-operator">??</span> <span class="hljs-string">""</span>)</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> file1 <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan/test1.txt"</span>)<br><span class="hljs-keyword">let</span> file2 <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(<span class="hljs-string">"moxiaoyan/test2.txt"</span>)<br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-comment">// try manager.copyItem(at: file1, to: file2) // 直接复制文件</span><br>  <span class="hljs-keyword">try</span> manager.copyItem(atPath: file1.path, toPath: file2.path) <span class="hljs-comment">// 复制文件内容</span><br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"copyItem error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> url <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(name, isDirectory: <span class="hljs-literal">true</span>)<br><span class="hljs-keyword">let</span> file1 <span class="hljs-operator">=</span> url.appendingPathComponent(name)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"文件1:<span class="hljs-subst">\(file1)</span>"</span>)<br><span class="hljs-keyword">let</span> file2 <span class="hljs-operator">=</span> url.appendingPathComponent(to <span class="hljs-operator">+</span> <span class="hljs-string">"/test1.txt"</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"文件2:<span class="hljs-subst">\(file2)</span>"</span>)<br><span class="hljs-keyword">do</span> {<br>  <span class="hljs-comment">// try manager.moveItem(atPath: file1.path, toPath: file2.path) // 直接拷贝文件</span><br>  <span class="hljs-keyword">try</span> manager.moveItem(at: file1, to: file2) <span class="hljs-comment">// 拷贝文件内容</span><br>} <span class="hljs-keyword">catch</span> {<br>  <span class="hljs-built_in">print</span>(<span class="hljs-string">"moveItem error:<span class="hljs-subst">\(error)</span>"</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="比较文件"><a href="#比较文件" class="headerlink" title="比较文件"></a>比较文件</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">let</span> file1 <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(name1)<br><span class="hljs-keyword">let</span> file2 <span class="hljs-operator">=</span> <span class="hljs-keyword">self</span>.documentURL.appendingPathComponent(name2)<br><span class="hljs-comment">// 参数必须的是路径（相同字符串false）</span><br><span class="hljs-keyword">let</span> equal <span class="hljs-operator">=</span> manager.contentsEqual(atPath: file1.path, andPath: file2.path) <br><span class="hljs-built_in">print</span>(<span class="hljs-string">"file1:<span class="hljs-subst">\(file1)</span>"</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"file2:<span class="hljs-subst">\(file2)</span>"</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">"equal:<span class="hljs-subst">\(equal)</span>"</span>)<br></code></pre></td></tr></tbody></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="../categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="../tags/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="../tags/Swift/">Swift</a>
+                    
+                      <a class="hover-with-bg" href="../tags/file/">file</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="28837.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">iOS调试摘录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="16775.html">
+                        <span class="hidden-mobile">Swift字符串截取摘录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content" style= "text-align: center;">
+     <p><span><i class="iconfont icon-copyright"></i></span> 2019 - <script> document.write(new Date().getFullYear()); </script> <a target="_blank" href="http://zsd.name/"> 张赛东</a></p> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css">
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/plugins.js"></script>
+
+<!-- Plugins -->
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+  
+        <script src="/js/img-lazyload.js"></script>
+  
+
+
+
+  
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js"></script>
+  
+  
+      <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script src="/js/boot.js"></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i+240*i||document.documentElement.clientHeight*i+240*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

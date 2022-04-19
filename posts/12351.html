@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../img/favicon.png">
+  <link rel="icon" href="../img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="张赛东">
+  <meta name="keywords" content="张赛东, 湖南张赛东, 衡阳张赛东, 耒阳张赛东, 正源张赛东, 花桥张赛东, 张赛东湖南, 张赛东耒阳, 张赛东正源, 湖南工业大学张赛东, 张赛东湖南工业大学, 张赛东衡阳, 张赛东计算机, 计算机张赛东, 张赛东花桥, IT张赛东, 张赛东IT, 碧云斜, 张赛东的艺苑, 张赛东博客, 张赛东的博客, 博客张赛东, 软件工程张赛东, 张赛东软件工程">
+  
+    <meta name="description" content="iOS延时&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 今天我使用了这样一种延时，目的是等待文件下载完，返回与文件相关的数据，我试了各种多线程，后面发现这种延时有阻塞的味道，能有效地防止函数提前返回数据 12345678while true {    if let compiledModelURL &#x3D; try? MLModel.compileModel(at: url) {    } else">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS延时">
+<meta property="og:url" content="https://blog.zsd.name/posts/12351.html">
+<meta property="og:site_name" content="张赛东">
+<meta property="og:description" content="iOS延时&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 今天我使用了这样一种延时，目的是等待文件下载完，返回与文件相关的数据，我试了各种多线程，后面发现这种延时有阻塞的味道，能有效地防止函数提前返回数据 12345678while true {    if let compiledModelURL &#x3D; try? MLModel.compileModel(at: url) {    } else">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-06T12:40:00.000Z">
+<meta property="article:modified_time" content="2022-01-30T17:04:37.821Z">
+<meta property="article:author" content="张赛东">
+<meta property="article:tag" content="iOS">
+<meta property="article:tag" content="Swift">
+<meta property="article:tag" content="time">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>iOS延时 - 张赛东</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css">
+
+  
+    
+    
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css">
+    
+  
+
+  
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="/css/main.css">
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script src="/js/utils.js"></script>
+  <script src="/js/color-schema.js"></script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="张赛东" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html">
+      <strong>张赛东</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../archives">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../categories">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../tags">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../about">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/87.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="iOS延时">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-06 20:40" pubdate>
+        2021年4月6日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">iOS延时</h1>
+            
+            <div class="markdown-body">
+              <h1 id="iOS延时"><a href="#iOS延时" class="headerlink" title="iOS延时"></a>iOS延时</h1><p>========================</p>
+<p>今天我使用了这样一种延时，目的是等待文件下载完，返回与文件相关的数据，我试了各种多线程，后面发现这种延时有阻塞的味道，能有效地防止函数提前返回数据</p>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">while</span> <span class="hljs-literal">true</span> {<br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> compiledModelURL <span class="hljs-operator">=</span> <span class="hljs-keyword">try?</span> <span class="hljs-type">MLModel</span>.compileModel(at: url) {<br>    } <span class="hljs-keyword">else</span> {<br>        <span class="hljs-type">Thread</span>.sleep(forTimeInterval: <span class="hljs-number">2</span>)<br>        <span class="hljs-keyword">continue</span><br>    }<br>    <span class="hljs-keyword">break</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>这种延时不能起到阻塞作用，也不能防止函数提前返回，但是它可以等待一定时间后执行某种操作。</p>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">DispatchQueue</span>.main.asyncAfter(deadline: .now() <span class="hljs-operator">+</span> <span class="hljs-number">3</span>) {<br>    <span class="hljs-keyword">let</span> view <span class="hljs-operator">=</span> <span class="hljs-type">UIViewController</span>.getCurrentViewController()<span class="hljs-operator">?</span>.view<br>    view<span class="hljs-operator">?</span>.hideToastActivity()<br>    view<span class="hljs-operator">?</span>.hideAllToasts()<br>}<br></code></pre></td></tr></tbody></table></figure>
+<p>下面是网上看到的一些延时</p>
+<figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">// 1.perform(必须在主线程中执行)</span><br><span class="hljs-keyword">self</span>.perform(#selector(delayExecution), with: <span class="hljs-literal">nil</span>, afterDelay: <span class="hljs-number">3</span>)<br><span class="hljs-comment">// 取消</span><br><span class="hljs-type">NSObject</span>.cancelPreviousPerformRequests(withTarget: <span class="hljs-keyword">self</span>)<br><br><span class="hljs-comment">// 2.timer(必须在主线程中执行)</span><br><span class="hljs-type">Timer</span>.scheduledTimer(timeInterval: <span class="hljs-number">3</span>, target: <span class="hljs-keyword">self</span>, selector: #selector(delayExecution), userInfo: <span class="hljs-literal">nil</span>, repeats: <span class="hljs-literal">false</span>)<br><br><span class="hljs-comment">// 3.Thread (在主线程会卡主界面)</span><br><span class="hljs-type">Thread</span>.sleep(forTimeInterval: <span class="hljs-number">3</span>)<br><span class="hljs-keyword">self</span>.delayExecution()<br><br><span class="hljs-comment">// 4.GCD 主线程/子线程</span><br><span class="hljs-type">DispatchQueue</span>.main.asyncAfter(deadline: .now() <span class="hljs-operator">+</span> <span class="hljs-number">3</span>) {<br>    <span class="hljs-keyword">self</span>.delayExecution()<br>}<br><br><span class="hljs-type">DispatchQueue</span>.global().asyncAfter(deadline: .now() <span class="hljs-operator">+</span> <span class="hljs-number">3</span>) {<br>    <span class="hljs-keyword">self</span>.delayExecution()<br>}<br><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="延时执行"><a href="#延时执行" class="headerlink" title="延时执行"></a>延时执行</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-keyword">typealias</span> <span class="hljs-type">Task</span> <span class="hljs-operator">=</span> (<span class="hljs-keyword">_</span> cancel: <span class="hljs-type">Bool</span>) -&gt; <span class="hljs-type">Void</span><br><span class="hljs-comment">/// 代码延迟运行</span><br><span class="hljs-comment">///</span><br><span class="hljs-comment">/// - Parameters:</span><br><span class="hljs-comment">///   - delayTime: 延时时间。比如：.seconds(5)、.milliseconds(500)</span><br><span class="hljs-comment">///   - qosClass: 要使用的全局QOS类（默认为 nil，表示主线程）</span><br><span class="hljs-comment">///   - task: 延迟运行的代码</span><br><span class="hljs-comment">/// - Returns: Task?</span><br><span class="hljs-keyword">@discardableResult</span><br><span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">bk_delay</span>(<span class="hljs-params">by</span> <span class="hljs-params">delayTime</span>: <span class="hljs-type">TimeInterval</span>, <span class="hljs-params">qosClass</span>: <span class="hljs-type">DispatchQoS</span>.<span class="hljs-type">QoSClass</span>? <span class="hljs-operator">=</span> <span class="hljs-literal">nil</span>, <span class="hljs-keyword">_</span> <span class="hljs-params">task</span>: <span class="hljs-keyword">@escaping</span> () -&gt; <span class="hljs-type">Void</span>)</span> -&gt; <span class="hljs-type">Task</span>? {<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dispatch_later</span>(<span class="hljs-params">block</span>: <span class="hljs-keyword">@escaping</span> () -&gt; <span class="hljs-type">Void</span>)</span> {<br>        <span class="hljs-keyword">let</span> dispatchQueue <span class="hljs-operator">=</span> qosClass <span class="hljs-operator">!=</span> <span class="hljs-literal">nil</span> <span class="hljs-operator">?</span> <span class="hljs-type">DispatchQueue</span>.global(qos: qosClass<span class="hljs-operator">!</span>) : .main<br>        dispatchQueue.asyncAfter(deadline: .now() <span class="hljs-operator">+</span> delayTime, execute: block)<br>    }<br>    <br>    <span class="hljs-keyword">var</span> closure: (() -&gt; <span class="hljs-type">Void</span>)<span class="hljs-operator">?</span> <span class="hljs-operator">=</span> task<br>    <span class="hljs-keyword">var</span> result: <span class="hljs-type">Task</span>?<br>    <br>    <span class="hljs-keyword">let</span> delayedClosure: <span class="hljs-type">Task</span> <span class="hljs-operator">=</span> { cancel <span class="hljs-keyword">in</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> internalClosure <span class="hljs-operator">=</span> closure {<br>            <span class="hljs-keyword">if</span> <span class="hljs-operator">!</span>cancel {<br>                <span class="hljs-type">DispatchQueue</span>.main.async(execute: internalClosure)<br>            }<br>        }<br>        closure <span class="hljs-operator">=</span> <span class="hljs-literal">nil</span><br>        result <span class="hljs-operator">=</span> <span class="hljs-literal">nil</span><br>    }<br>    <br>    result <span class="hljs-operator">=</span> delayedClosure<br>    <br>    dispatch_later {<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> delayedClosure <span class="hljs-operator">=</span> result {<br>            delayedClosure(<span class="hljs-literal">false</span>)<br>        }<br>    }<br>    <br>    <span class="hljs-keyword">return</span> result<br>    <br>}<br><br><span class="hljs-comment">/// 取消代码延时运行</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">delayCancel</span>(<span class="hljs-keyword">_</span> <span class="hljs-params">task</span>: <span class="hljs-type">Task</span>?)</span> {<br>    task<span class="hljs-operator">?</span>(<span class="hljs-literal">true</span>)<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="倒计时"><a href="#倒计时" class="headerlink" title="倒计时"></a>倒计时</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">/// GCD定时器倒计时</span><br><span class="hljs-comment">///</span><br><span class="hljs-comment">/// - Parameters:</span><br><span class="hljs-comment">///   - timeInterval: 间隔时间</span><br><span class="hljs-comment">///   - repeatCount: 重复次数</span><br><span class="hljs-comment">///   - handler: 循环事件,闭包参数: 1.timer 2.剩余执行次数</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dispatchTimer</span>(<span class="hljs-params">timeInterval</span>: <span class="hljs-type">Double</span>, <span class="hljs-params">repeatCount</span>: <span class="hljs-type">Int</span>, <span class="hljs-params">handler</span>: <span class="hljs-keyword">@escaping</span> (<span class="hljs-type">DispatchSourceTimer</span>?, <span class="hljs-type">Int</span>) -&gt; <span class="hljs-type">Void</span>)</span> {<br>    <br>    <span class="hljs-keyword">if</span> repeatCount <span class="hljs-operator">&lt;=</span> <span class="hljs-number">0</span> {<br>        <span class="hljs-keyword">return</span><br>    }<br>    <span class="hljs-keyword">let</span> timer <span class="hljs-operator">=</span> <span class="hljs-type">DispatchSource</span>.makeTimerSource(flags: [], queue: <span class="hljs-type">DispatchQueue</span>.main)<br>    <span class="hljs-keyword">var</span> count <span class="hljs-operator">=</span> repeatCount<br>    timer.schedule(deadline: .now(), repeating: timeInterval)<br>    timer.setEventHandler {<br>        count <span class="hljs-operator">-=</span> <span class="hljs-number">1</span><br>        <span class="hljs-type">DispatchQueue</span>.main.async {<br>            handler(timer, count)<br>        }<br>        <span class="hljs-keyword">if</span> count <span class="hljs-operator">==</span> <span class="hljs-number">0</span> {<br>            timer.cancel()<br>        }<br>    }<br>    timer.resume()<br>    <br>}<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><figure class="highlight swift"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-comment">/// GCD实现定时器</span><br><span class="hljs-comment">///</span><br><span class="hljs-comment">/// - Parameters:</span><br><span class="hljs-comment">///   - timeInterval: 间隔时间</span><br><span class="hljs-comment">///   - handler: 事件</span><br><span class="hljs-comment">///   - needRepeat: 是否重复</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dispatchTimer</span>(<span class="hljs-params">timeInterval</span>: <span class="hljs-type">Double</span>, <span class="hljs-params">handler</span>: <span class="hljs-keyword">@escaping</span> (<span class="hljs-type">DispatchSourceTimer</span>?) -&gt; <span class="hljs-type">Void</span>, <span class="hljs-params">needRepeat</span>: <span class="hljs-type">Bool</span>)</span> {<br>    <br>    <span class="hljs-keyword">let</span> timer <span class="hljs-operator">=</span> <span class="hljs-type">DispatchSource</span>.makeTimerSource(flags: [], queue: <span class="hljs-type">DispatchQueue</span>.main)<br>    timer.schedule(deadline: .now(), repeating: timeInterval)<br>    timer.setEventHandler {<br>        <span class="hljs-type">DispatchQueue</span>.main.async {<br>            <span class="hljs-keyword">if</span> needRepeat {<br>                handler(timer)<br>            } <span class="hljs-keyword">else</span> {<br>                timer.cancel()<br>                handler(<span class="hljs-literal">nil</span>)<br>            }<br>        }<br>    }<br>    timer.resume()<br>    <br>}<br></code></pre></td></tr></tbody></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="../categories/%E7%A7%BB%E5%8A%A8%E5%BC%80%E5%8F%91/">移动开发</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="../tags/iOS/">iOS</a>
+                    
+                      <a class="hover-with-bg" href="../tags/Swift/">Swift</a>
+                    
+                      <a class="hover-with-bg" href="../tags/time/">time</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="32840.html">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">iOS mlmodelc内部文件格式规范</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="28837.html">
+                        <span class="hidden-mobile">iOS调试摘录</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content" style= "text-align: center;">
+     <p><span><i class="iconfont icon-copyright"></i></span> 2019 - <script> document.write(new Date().getFullYear()); </script> <a target="_blank" href="http://zsd.name/"> 张赛东</a></p> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css">
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/plugins.js"></script>
+
+<!-- Plugins -->
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+  
+        <script src="/js/img-lazyload.js"></script>
+  
+
+
+
+  
+
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js"></script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  
+  
+  <script src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js"></script>
+  
+  
+      <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+  
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js"></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script src="/js/boot.js"></script>
+
+
+<script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var e=n.imageLazyLoadSetting.isSPA,i=n.imageLazyLoadSetting.preloadRatio||1,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){e&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(n.innerHeight*i+240*i||document.documentElement.clientHeight*i+240*i)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},t.src!==i&&(n.src=i)}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>

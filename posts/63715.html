@@ -68,7 +68,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"9a8d11b1b6c75b0a6341d5ad863bb30e","google":"G-4Q3VCNHNLN","gtag":312392778,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"9a8d11b1b6c75b0a6341d5ad863bb30e","google":"G-4Q3VCNHNLN","gtag":312392778,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script src="/js/utils.js"></script>
   <script src="/js/color-schema.js"></script>
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/73.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/117.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -655,7 +655,7 @@
 
 <p>total：图片总数量，对应中间包含的图片 url 数量<br>n1-n2-…：每行的图片数量，可以省略，默认单行最多 3 张图，求和必须相等于 total，否则按默认样式</p>
 <p>如下图为 <code>{% gi 5 3-2 %}</code> 示例，代表共 5 张图，第一行 3 张图，第二行 2 张图。</p>
-<p><img src="/posts/63715.htm/.vuepress/public/group_image.png" srcset="/img/loading.gif" lazyload alt="Group Images"></p>
+<p><img src="/posts/63715.htm/.vuepress/public/group_image.png" alt="Group Images"></p>
 <h3 id="LaTeX-数学公式"><a href="#LaTeX-数学公式" class="headerlink" title="LaTeX 数学公式"></a>LaTeX 数学公式</h3><p>:::tip<br>Hexo 5.0 以上，可尝试 Hexo 官方的 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-math">hexo-math</a> 插件，支持更多定制化参数，使用方式参照仓库内的文档，以下介绍的是主题内置的 LaTeX 功能。<br>:::</p>
 <p>当需要使用 <a target="_blank" rel="noopener" href="https://www.latex-project.org/help/documentation/">LaTeX</a> 语法的数学公式时，可手动开启本功能，需要完成三步操作：</p>
 <p><strong>1. 设置主题配置</strong></p>
@@ -790,7 +790,7 @@
 </ul>
 <p>主题包含默认的404页面，你也可以将自定义的 <code>404.html</code> 放置在博客的 <code>source</code> 目录下。</p>
 <h2 id="内置社交图标"><a href="#内置社交图标" class="headerlink" title="内置社交图标"></a>内置社交图标</h2><p>主题内置了一些社交类图标，均来自 <a target="_blank" rel="noopener" href="https://www.iconfont.cn/">Iconfont</a>，由于不支持公开展示，因此只能通过图片：</p>
-<p><img src="/posts/63715.htm/.vuepress/public/iconfont.png" srcset="/img/loading.gif" lazyload alt="内置图标"></p>
+<p><img src="/posts/63715.htm/.vuepress/public/iconfont.png" alt="内置图标"></p>
 <p>将 <code>icon-</code> 开头的那行填入 css class 即可，例如 <code>iconfont icon-wechat-fill</code>。</p>
 <p>以上主要用在关于页中，当然你也可以通过插入 HTML 的方式用到主题的任何地方。</p>
 <h2 id="自定义图标"><a href="#自定义图标" class="headerlink" title="自定义图标"></a>自定义图标</h2><p><a target="_blank" rel="noopener" href="https://www.iconfont.cn/">Iconfont</a>支持用户创建项目来管理和使用图标库，在 <code>图标管理-我的项目</code> 中即可管理和创建项目。将所需图标添加至购物车，再通过购物车添加至所创建的项目中。在项目中可以下载至本地与生成在线链接，Iconfont 支持在阿里云的 CDN 中生成 CSS 或 JS 文件用来调用。</p>
@@ -1023,7 +1023,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -1142,10 +1142,6 @@
   <script src="/js/local-search.js"></script>
 
 
-
-  
-        <script src="/js/img-lazyload.js"></script>
-  
 
 
 

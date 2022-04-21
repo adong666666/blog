@@ -67,7 +67,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"9a8d11b1b6c75b0a6341d5ad863bb30e","google":"G-4Q3VCNHNLN","gtag":312392778,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"9a8d11b1b6c75b0a6341d5ad863bb30e","google":"G-4Q3VCNHNLN","gtag":312392778,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script src="/js/utils.js"></script>
   <script src="/js/color-schema.js"></script>
@@ -175,7 +175,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/123.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/105.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -243,11 +243,11 @@
             
             <div class="markdown-body">
               <h1 id="Mac命令行关闭端口"><a href="#Mac命令行关闭端口" class="headerlink" title="Mac命令行关闭端口"></a>Mac命令行关闭端口</h1><p>========================</p>
-<h2 id="lsof-i-端口号"><a href="#lsof-i-端口号" class="headerlink" title="lsof -i:端口号"></a>lsof -i:端口号</h2><p>这里项目PefectTemplate占用了8181端口号，因此我输入的是<code>lsof -i:8181</code>，可以看到PerfectTemplate的进程ID为1869。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/Mac%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/lsof.png" srcset="/img/loading.gif" lazyload alt="查看端口号"></p>
+<h2 id="lsof-i-端口号"><a href="#lsof-i-端口号" class="headerlink" title="lsof -i:端口号"></a>lsof -i:端口号</h2><p>这里项目PefectTemplate占用了8181端口号，因此我输入的是<code>lsof -i:8181</code>，可以看到PerfectTemplate的进程ID为1869。<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/Mac%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/lsof.png" alt="查看端口号"></p>
 <h2 id="kill-PID"><a href="#kill-PID" class="headerlink" title="kill PID"></a>kill PID</h2><p>得到PID为1869后，我需要关闭端口，只需要使用<code>kill 1869</code>即可。</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">zhangsaidong@zhangsaidongs-MacBook-Pro PerfectTemplate % lsof -i:8181<br>COMMAND    PID         USER   FD   TYPE            DEVICE SIZE/OFF NODE NAME<br>Google     574 zhangsaidong   38u  IPv4 0xe91302581543067      0t0  TCP localhost:56525-&gt;localhost:8181 (ESTABLISHED)<br>Google     574 zhangsaidong   44u  IPv4 0xe91302581f1b067      0t0  TCP localhost:56526-&gt;localhost:8181 (ESTABLISHED)<br>PerfectTe 1869 zhangsaidong    3u  IPv4 0xe91302587abea7f      0t0  TCP *:8181 (LISTEN)<br>PerfectTe 1869 zhangsaidong    4u  IPv4 0xe91302582798067      0t0  TCP localhost:8181-&gt;localhost:56525 (ESTABLISHED)<br>PerfectTe 1869 zhangsaidong    5u  IPv4 0xe91302579eaa807      0t0  TCP localhost:8181-&gt;localhost:56526 (ESTABLISHED)<br>zhangsaidong@zhangsaidongs-MacBook-Pro PerfectTemplate % <span class="hljs-built_in">kill</span> 1869<br></code></pre></td></tr></tbody></table></figure>
-<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="关闭前"><a href="#关闭前" class="headerlink" title="关闭前"></a>关闭前</h3><p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/Mac%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/%E5%85%B3%E9%97%AD%E5%89%8D.png" srcset="/img/loading.gif" lazyload alt="关闭前"></p>
-<h3 id="关闭后"><a href="#关闭后" class="headerlink" title="关闭后"></a>关闭后</h3><p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/Mac%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/%E5%85%B3%E9%97%AD%E5%90%8E.png" srcset="/img/loading.gif" lazyload alt="关闭后"><br>至此端口被成功关闭。</p>
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><h3 id="关闭前"><a href="#关闭前" class="headerlink" title="关闭前"></a>关闭前</h3><p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/Mac%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/%E5%85%B3%E9%97%AD%E5%89%8D.png" alt="关闭前"></p>
+<h3 id="关闭后"><a href="#关闭后" class="headerlink" title="关闭后"></a>关闭后</h3><p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/Mac%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%85%B3%E9%97%AD%E7%AB%AF%E5%8F%A3/%E5%85%B3%E9%97%AD%E5%90%8E.png" alt="关闭后"><br>至此端口被成功关闭。</p>
 
             </div>
             <hr>
@@ -305,7 +305,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -424,10 +424,6 @@
   <script src="/js/local-search.js"></script>
 
 
-
-  
-        <script src="/js/img-lazyload.js"></script>
-  
 
 
 

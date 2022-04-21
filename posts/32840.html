@@ -69,7 +69,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"9a8d11b1b6c75b0a6341d5ad863bb30e","google":"G-4Q3VCNHNLN","gtag":312392778,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.zsd.name","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"9a8d11b1b6c75b0a6341d5ad863bb30e","google":"G-4Q3VCNHNLN","gtag":312392778,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
   <script src="/js/utils.js"></script>
   <script src="/js/color-schema.js"></script>
@@ -177,7 +177,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/87.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/32.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -247,7 +247,7 @@
               <h1 id="iOS-mlmodelc内部文件格式规范"><a href="#iOS-mlmodelc内部文件格式规范" class="headerlink" title="iOS mlmodelc内部文件格式规范"></a>iOS mlmodelc内部文件格式规范</h1><p>========================<br>尽量本地编译Core ML mlmodel，则得到的mlmodelc可以直接使用</p>
 <p>通过网络加载的Core ML mlmodel所编译而出的mlmodelc虽说内容一致，但格式不方便直接使用，而且……最重要的是，网络加载的mlmodel至少还要再编译一次，相当于在App内占用了两个模型的体量。而且有可能需要重复编译多次，即占用多个模型的体量，如果还不注重清理的话，App的体量会越来越大，而且内部数据还大量重复，因为编译出来mlmodec不能直接使用(你可以在代码里调整模型的内部格式，但是这也太麻烦了，对不同模型还得不同处理)</p>
 <p>所以建议使用mlmodel本地编译出来后的mlmodelc，你可以在Products中的.app文件夹中右键显示包内容找到编译后的mlmodelc文件</p>
-<p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/iOSmlmodelc%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/1.png" srcset="/img/loading.gif" lazyload><br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/iOSmlmodelc%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/2.png" srcset="/img/loading.gif" lazyload><br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/iOSmlmodelc%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/3.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/iOSmlmodelc%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/1.png"><br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/iOSmlmodelc%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/2.png"><br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/iOSmlmodelc%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/3.png"></p>
 
             </div>
             <hr>
@@ -309,7 +309,7 @@
 
             
               <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
+              <article class="comments" id="comments">
                 
                   
                 
@@ -428,10 +428,6 @@
   <script src="/js/local-search.js"></script>
 
 
-
-  
-        <script src="/js/img-lazyload.js"></script>
-  
 
 
 

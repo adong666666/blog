@@ -25,8 +25,8 @@
 <meta property="og:site_name" content="张赛东">
 <meta property="og:description" content="LeetCode第62题（动态规划）：不同路径&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 题目如下： 123456789101112131415161718192021222324252627282930313233343536373862. 不同路径一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。机器人每次只能向下或者向右移动一步。机器人试图达到网">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/2.png">
 <meta property="article:published_time" content="2022-01-30T03:48:00.000Z">
 <meta property="article:modified_time" content="2022-01-30T17:21:54.320Z">
 <meta property="article:author" content="张赛东">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="记忆化">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/1.png">
   
   
   <title>LeetCode第62题（动态规划）：不同路径 - 张赛东</title>
@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/9.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/75.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -246,7 +246,7 @@
             
             <div class="markdown-body">
               <h1 id="LeetCode第62题（动态规划）：不同路径"><a href="#LeetCode第62题（动态规划）：不同路径" class="headerlink" title="LeetCode第62题（动态规划）：不同路径"></a>LeetCode第62题（动态规划）：不同路径</h1><p>========================</p>
-<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/1.png"></p>
+<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/1.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight txt"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><pre><code class="hljs txt">62. 不同路径<br>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。<br><br>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。<br><br>问总共有多少条不同的路径？<br><br> <br><br>示例 1：<br><br><br>输入：m = 3, n = 7<br>输出：28<br>示例 2：<br><br>输入：m = 3, n = 2<br>输出：3<br>解释：<br>从左上角开始，总共有 3 条路径可以到达右下角。<br>1. 向右 -&gt; 向下 -&gt; 向下<br>2. 向下 -&gt; 向下 -&gt; 向右<br>3. 向下 -&gt; 向右 -&gt; 向下<br>示例 3：<br><br>输入：m = 7, n = 3<br>输出：28<br>示例 4：<br><br>输入：m = 3, n = 3<br>输出：6<br> <br><br>提示：<br><br>1 &lt;= m, n &lt;= 100<br>题目数据保证答案小于等于 2 * 109<br><br></code></pre></td></tr></tbody></table></figure>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">uniquePaths</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>{<br>        <span class="hljs-keyword">int</span> dp[m][n];<br>        <span class="hljs-comment">//dp[0][0] = 1;</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++) {<br>            dp[<span class="hljs-number">0</span>][i] = <span class="hljs-number">1</span>;<br>        }<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;m;i++){<br>            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        }<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;m;i++){<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;n;j++){<br>                dp[i][j] = dp[i<span class="hljs-number">-1</span>][j] + dp[i][j<span class="hljs-number">-1</span>];<br>                <span class="hljs-comment">//cout&lt;&lt; i &lt;&lt;"  "&lt;&lt; j &lt;&lt;"  "&lt;&lt;dp[i-1][j]&lt;&lt;" "&lt;&lt;dp[i][j-1]&lt;&lt;"  "&lt;&lt;dp[i][j]&lt;&lt;endl;</span><br>            }<br>        }<br><span class="hljs-comment">//        for(int i=0;i&lt;m;i++){</span><br><span class="hljs-comment">//            for(int j=0;j&lt;n;j++){</span><br><span class="hljs-comment">//                //cout&lt;&lt; i &lt;&lt;"  "&lt;&lt; j &lt;&lt;"  "&lt;&lt;dp[i-1][j]&lt;&lt;" "&lt;&lt;dp[i][j-1]&lt;&lt;"  "&lt;&lt;dp[i][j]&lt;&lt;endl;</span><br><span class="hljs-comment">//            }</span><br><span class="hljs-comment">//        }</span><br>        <span class="hljs-comment">//cout &lt;&lt; dp[m-1][n-1];</span><br>        <span class="hljs-keyword">return</span> dp[m<span class="hljs-number">-1</span>][n<span class="hljs-number">-1</span>];<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
@@ -254,7 +254,7 @@
 <li>空间复杂度：O(mn)，即为存储所有状态需要的空间。注意到 f(i, j)仅与第 i 行和第 i-1 行的状态有关，因此我们可以使用滚动数组代替代码中的二维数组，使空间复杂度降低为 O(n)。此外，由于我们交换行列的值并不会对答案产生影响，因此我们总可以通过交换 m 和 n 使得 m≤n，这样空间复杂度降低至 O(min(m,n))。</li>
 </ul>
 <p><code>心得： 这是一道比较经典的动规题，难度偏简单，主要是找到dp[i][j] = dp[i-1][j] + dp[i][j-1]这样一个关系，那么问题便能迎刃而解。我的解法用了双循环，应该是可以进一步优化的，虽然代码AC了，但还未达到最优时间复杂度。</code></p>
-<h2 id="官方方法二：组合数学"><a href="#官方方法二：组合数学" class="headerlink" title="官方方法二：组合数学"></a>官方方法二：组合数学</h2><h3 id="思路与算法"><a href="#思路与算法" class="headerlink" title="思路与算法"></a>思路与算法</h3><p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/2.png"></p>
+<h2 id="官方方法二：组合数学"><a href="#官方方法二：组合数学" class="headerlink" title="官方方法二：组合数学"></a>官方方法二：组合数学</h2><h3 id="思路与算法"><a href="#思路与算法" class="headerlink" title="思路与算法"></a>思路与算法</h3><p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC62%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/2.png" srcset="/img/loading.gif" lazyload></p>
 <h5 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h5><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">uniquePaths</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>{<br>        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = n, y = <span class="hljs-number">1</span>; y &lt; m; ++x, ++y) {<br>            ans = ans * x / y;<br>        }<br>        <span class="hljs-keyword">return</span> ans;<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 
 <h5 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h5><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">uniquePaths</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>{<br>        <span class="hljs-keyword">long</span> ans = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> x = n, y = <span class="hljs-number">1</span>; y &lt; m; ++x, ++y) {<br>            ans = ans * x / y;<br>        }<br>        <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>) ans;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
@@ -331,6 +331,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('../https:/cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"twikoo-7grg0d8805c99aa0","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>

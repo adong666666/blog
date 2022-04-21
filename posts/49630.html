@@ -25,8 +25,8 @@
 <meta property="og:site_name" content="张赛东">
 <meta property="og:description" content="动态规划之状态压缩摘录&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 一、概述1.状态压缩状态压缩就是使用某种方法，简明扼要地以最小代价来表示某种状态，通常是用一串01数字（二进制数）来表示各个点的状态。这就要求使用状态压缩的对象的点的状态必须只有两种，0 或 1；当然如果有三种状态用三进制来表示也未尝不可。 2.使用条件从状态压缩的特点来看，这个算法适用的题目符合以下的条件：  解法需要保存一">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/2.png">
 <meta property="article:published_time" content="2022-01-16T03:57:00.000Z">
 <meta property="article:modified_time" content="2022-01-30T16:49:50.200Z">
 <meta property="article:author" content="张赛东">
@@ -34,7 +34,7 @@
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/1.png">
   
   
   <title>动态规划之状态压缩 - 张赛东</title>
@@ -176,7 +176,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/82.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/116.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -286,7 +286,7 @@
 <li>判断x和y的符号是否相同：(a ^ b) &gt;= 0</li>
 <li>if(x == a) x = b; if(x == b) x = a：用异或运算符：x = a ^ b ^ x</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/1.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/1.png" srcset="/img/loading.gif" lazyload></p>
 <p>初试化状态的时候要看清条件，什么要，什么不要。<br>一般情况下要预处理前k行（k由题目定）。<br>Dp时题目给的条件和fit函数、state数组都要检查。</p>
 <p>最最重要的一点：</p>
 <blockquote>
@@ -297,7 +297,7 @@
 <p>例如：对于一个22的棋盘，有两种方法，一种是使用2个12的，一种是使用2个2*1的。</p>
 <p><code>【算法分析】</code></p>
 <p>在这道题目中,N和M的范围本应该是一样的，但实际上，N和M的范围却差别甚远，对于这种题目，首先应该想到的就是，正确算法与这两个范围有关！N的范围特别小，因此可以考虑使用状态压缩动态规划的思想，请看下面的图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/2.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220116%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B9%8B%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/2.png" srcset="/img/loading.gif" lazyload></p>
 <p>本思路来自博客，不过原博没有图，我帮他补个图，再优化一下内容。</p>
 <p>假设第一列已经填满，则第二列的摆设方式，只与第一列对第二列的影响有关。同理，第三列的摆设方式也只与第二列对它的影响有关。那么，使用一个长度为NN的二进制数statestate来表示这个影响，例如：4(00100)就表示了图上第二列的状态。</p>
 <p>因此，本题的状态可以这样表示：</p>
@@ -426,6 +426,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('../https:/cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"twikoo-7grg0d8805c99aa0","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>

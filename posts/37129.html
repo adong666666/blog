@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="张赛东">
 <meta property="og:description" content="POJ2411（状态压缩dp）：方格覆盖&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 题目如下： 123456789101112131415161718192021222324252627282930313233343536373839Mondriaan&#39;s DreamTime Limit: 3000MS        Memory Limit: 65536KTotal Submissions">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ2411%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E6%96%B9%E6%A0%BC%E8%A6%86%E7%9B%96/1.png">
 <meta property="article:published_time" content="2022-03-20T03:18:00.000Z">
 <meta property="article:modified_time" content="2022-03-20T09:34:38.486Z">
 <meta property="article:author" content="张赛东">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="POJ">
 <meta property="article:tag" content="状态压缩">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ2411%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E6%96%B9%E6%A0%BC%E8%A6%86%E7%9B%96/1.png">
   
   
   <title>POJ2411（状态压缩dp）：方格覆盖 - 张赛东</title>
@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/66.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/71.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -246,7 +246,7 @@
             
             <div class="markdown-body">
               <h1 id="POJ2411（状态压缩dp）：方格覆盖"><a href="#POJ2411（状态压缩dp）：方格覆盖" class="headerlink" title="POJ2411（状态压缩dp）：方格覆盖"></a>POJ2411（状态压缩dp）：方格覆盖</h1><p>========================</p>
-<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ2411%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E6%96%B9%E6%A0%BC%E8%A6%86%E7%9B%96/1.png"></p>
+<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ2411%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E6%96%B9%E6%A0%BC%E8%A6%86%E7%9B%96/1.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight txt"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></div></td><td class="code"><pre><code class="hljs txt">Mondriaan's Dream<br>Time Limit: 3000MS        Memory Limit: 65536K<br>Total Submissions: 27144        Accepted: 14765<br>Description<br><br>Squares and rectangles fascinated the famous Dutch painter Piet Mondriaan. One night, after producing the drawings in his 'toilet series' (where he had to use his toilet paper to draw on, for all of his paper was filled with squares and rectangles), he dreamt of filling a large rectangle with small rectangles of width 2 and height 1 in varying ways.<br><br><br>Expert as he was in this material, he saw at a glance that he'll need a computer to calculate the number of ways to fill the large rectangle whose dimensions were integer values, as well. Help him, so that his dream won't turn into a nightmare!<br>Input<br><br>The input contains several test cases. Each test case is made up of two integer numbers: the height h and the width w of the large rectangle. Input is terminated by h=w=0. Otherwise, 1&lt;=h,w&lt;=11.<br>Output<br><br>For each test case, output the number of different ways the given rectangle can be filled with small rectangles of size 2 times 1. Assume the given large rectangle is oriented, i.e. count symmetrical tilings multiple times.<br>Sample Input<br><br>1 2<br>1 3<br>1 4<br>2 2<br>2 3<br>2 4<br>2 11<br>4 11<br>0 0<br>Sample Output<br><br>1<br>0<br>1<br>2<br>3<br>5<br>144<br>51205<br>Source<br><br>Ulm Local 2000<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//没写出来</span><br></code></pre></td></tr></tbody></table></figure>
 <p><code>心得： 这是一道比较经典的状态压缩动规题，难度高。</code></p>
@@ -307,8 +307,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="63715.html">
-                        <span class="hidden-mobile">hexo-theme-fluid配置指南</span>
+                      <a href="63716.html">
+                        <span class="hidden-mobile">hexo-theme-matery配置指南</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -318,6 +318,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('../https:/cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"twikoo-7grg0d8805c99aa0","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>

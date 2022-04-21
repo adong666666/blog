@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="张赛东">
 <meta property="og:description" content="LeetCode第64题（动态规划）：最小路径和&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 题目如下： 1234567891011121314151617181920212223242564. 最小路径和给定一个包含非负整数的 m&amp;nbsp;x&amp;nbsp;n&amp;nbsp;网格&amp;nbsp;grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。说明：每次只能向下或者向右移动一步">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC64%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/1.png">
 <meta property="article:published_time" content="2022-02-08T17:14:00.000Z">
 <meta property="article:modified_time" content="2022-02-09T14:38:26.327Z">
 <meta property="article:author" content="张赛东">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="记忆化">
 <meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC64%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/1.png">
   
   
   <title>LeetCode第64题（动态规划）：最小路径和 - 张赛东</title>
@@ -177,7 +177,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/78.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/70.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -245,7 +245,7 @@
             
             <div class="markdown-body">
               <h1 id="LeetCode第64题（动态规划）：最小路径和"><a href="#LeetCode第64题（动态规划）：最小路径和" class="headerlink" title="LeetCode第64题（动态规划）：最小路径和"></a>LeetCode第64题（动态规划）：最小路径和</h1><p>========================</p>
-<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC64%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/1.png"></p>
+<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220130LeetCode%E7%AC%AC64%E9%A2%98%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%EF%BC%9A%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/1.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight txt"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><pre><code class="hljs txt">64. 最小路径和<br>给定一个包含非负整数的 m&nbsp;x&nbsp;n&nbsp;网格&nbsp;grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。<br><br>说明：每次只能向下或者向右移动一步。<br><br>&nbsp;<br><br>示例 1：<br><br><br>输入：grid = [[1,3,1],[1,5,1],[4,2,1]]<br>输出：7<br>解释：因为路径 1→3→1→1→1 的总和最小。<br>示例 2：<br><br>输入：grid = [[1,2,3],[4,5,6]]<br>输出：12<br>&nbsp;<br><br>提示：<br><br>m == grid.length<br>n == grid[i].length<br>1 &lt;= m, n &lt;= 200<br>0 &lt;= grid[i][j] &lt;= 100<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> {</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">minPathSum</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt;&amp; grid)</span> </span>{<br>        <span class="hljs-keyword">int</span> m = (<span class="hljs-keyword">int</span>) grid.size();<br>        <span class="hljs-keyword">int</span> n = (<span class="hljs-keyword">int</span>) grid[<span class="hljs-number">0</span>].size();<br>        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; dp(m, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(n));<br>        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;n;i++) {<br>            dp[<span class="hljs-number">0</span>][i] = dp[<span class="hljs-number">0</span>][i<span class="hljs-number">-1</span>] + grid[<span class="hljs-number">0</span>][i];<br>        }<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;m;i++) {<br>            dp[i][<span class="hljs-number">0</span>] = dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>] + grid[i][<span class="hljs-number">0</span>];<br>        }<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;m;i++){<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">1</span>;j&lt;n;j++) {<br>                dp[i][j] = min(dp[i][j<span class="hljs-number">-1</span>] + grid[i][j], dp[i<span class="hljs-number">-1</span>][j] + grid[i][j]);<br>            }<br>        }<br>        <span class="hljs-keyword">return</span> dp[m<span class="hljs-number">-1</span>][n<span class="hljs-number">-1</span>];<br>    }<br>};<br></code></pre></td></tr></tbody></table></figure>
 <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
@@ -320,6 +320,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('../https:/cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"twikoo-7grg0d8805c99aa0","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>

@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="张赛东">
 <meta property="og:description" content="POJ3254（状态压缩dp）：玉米地&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; 题目如下： 12345678910111213141516171819202122232425262728293031323334Corn FieldsTime Limit: 2000MS        Memory Limit: 65536KTotal Submissions: 26638        Ac">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ3254%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E7%8E%89%E7%B1%B3%E5%9C%B0/1.png">
 <meta property="article:published_time" content="2022-03-20T09:31:00.000Z">
 <meta property="article:modified_time" content="2022-03-20T09:34:23.856Z">
 <meta property="article:author" content="张赛东">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="POJ">
 <meta property="article:tag" content="状态压缩">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ3254%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E7%8E%89%E7%B1%B3%E5%9C%B0/1.png">
   
   
   <title>POJ3254（状态压缩dp）：玉米地 - 张赛东</title>
@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/16.jpg') no-repeat center center;
+         style="background: url('https://cdn.jsdelivr.net/gh/adong666666/cdn-wallpaper/42.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -246,7 +246,7 @@
             
             <div class="markdown-body">
               <h1 id="POJ3254（状态压缩dp）：玉米地"><a href="#POJ3254（状态压缩dp）：玉米地" class="headerlink" title="POJ3254（状态压缩dp）：玉米地"></a>POJ3254（状态压缩dp）：玉米地</h1><p>========================</p>
-<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/images/China_flag.gif" srcset="/img/loading.gif" lazyload data-original="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ3254%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E7%8E%89%E7%B1%B3%E5%9C%B0/1.png"></p>
+<p>题目如下：<br><img src="https://cdn.jsdelivr.net/gh/adong666666/source_cdn/_posts/20220320POJ3254%EF%BC%88%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9dp%EF%BC%89%EF%BC%9A%E7%8E%89%E7%B1%B3%E5%9C%B0/1.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight txt"><table><tbody><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></div></td><td class="code"><pre><code class="hljs txt">Corn Fields<br>Time Limit: 2000MS        Memory Limit: 65536K<br>Total Submissions: 26638        Accepted: 13894<br>Description<br><br>Farmer John has purchased a lush new rectangular pasture composed of M by N (1 ≤ M ≤ 12; 1 ≤ N ≤ 12) square parcels. He wants to grow some yummy corn for the cows on a number of squares. Regrettably, some of the squares are infertile and can't be planted. Canny FJ knows that the cows dislike eating close to each other, so when choosing which squares to plant, he avoids choosing squares that are adjacent; no two chosen squares share an edge. He has not yet made the final choice as to which squares to plant.<br><br>Being a very open-minded man, Farmer John wants to consider all possible options for how to choose the squares for planting. He is so open-minded that he considers choosing no squares as a valid option! Please help Farmer John determine the number of ways he can choose the squares to plant.<br><br>Input<br><br>Line 1: Two space-separated integers: M and N<br>Lines 2..M+1: Line i+1 describes row i of the pasture with N space-separated integers indicating whether a square is fertile (1 for fertile, 0 for infertile)<br>Output<br><br>Line 1: One integer: the number of ways that FJ can choose the squares modulo 100,000,000.<br>Sample Input<br><br>2 3<br>1 1 1<br>0 1 0<br>Sample Output<br><br>9<br>Hint<br><br>Number the squares as follows:<br>1 2 3<br>  4  <br><br>There are four ways to plant only on one squares (1, 2, 3, or 4), three ways to plant on two squares (13, 14, or 34), 1 way to plant on three squares (134), and one way to plant on no squares. 4+3+1+1=9.<br>Source<br><br>USACO 2006 November Gold<br></code></pre></td></tr></tbody></table></figure>
 <h2 id="我的代码"><a href="#我的代码" class="headerlink" title="我的代码"></a>我的代码</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//没写出来</span><br></code></pre></td></tr></tbody></table></figure>
 <p><code>心得： 这是一道比较经典的状态压缩动规题，难度高。</code></p>
@@ -318,6 +318,35 @@
               
             </div>
 
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('../https:/cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"twikoo-7grg0d8805c99aa0","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
             
           </article>
         </div>
